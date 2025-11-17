@@ -22,15 +22,20 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if team name already exists in this event
-    const teamsInEvent = db.teams.getByEvent(eventId)
-    const existing = teamsInEvent.find(t => t.name === name.trim())
+    const teamName = name.trim()
+    const isTestTeam = teamName.toLowerCase() === 'test'
 
-    if (existing) {
-      return NextResponse.json(
-        { error: 'Team name already taken in this event' },
-        { status: 400 }
-      )
+    // Check if team name already exists in this event (skip check for "test" team)
+    if (!isTestTeam) {
+      const teamsInEvent = db.teams.getByEvent(eventId)
+      const existing = teamsInEvent.find(t => t.name.toLowerCase() !== 'test' && t.name === teamName)
+
+      if (existing) {
+        return NextResponse.json(
+          { error: 'Team name already taken in this event' },
+          { status: 400 }
+        )
+      }
     }
 
     // Create team
