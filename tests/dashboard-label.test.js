@@ -43,17 +43,17 @@ test('web-basics-challenge and ctfs exist', () => {
   })
 })
 
-test('team deletion API restricts access to test team', () => {
+test('team deletion API restricts access to superuser team', () => {
   const apiPath = path.join(__dirname, '..', 'app', 'api', 'teams', '[teamId]', 'route.ts')
   const source = fs.readFileSync(apiPath, 'utf8')
 
   assert.ok(
-    source.includes("requester.name.toLowerCase() !== 'test'"),
-    'DELETE /api/teams/[teamId] should restrict access to the test team'
+    source.includes("requester.name.toLowerCase() !== 'superuser'"),
+    'DELETE /api/teams/[teamId] should restrict access to the superuser team'
   )
 })
 
-test('dashboard includes remove button handler for test team', () => {
+test('dashboard includes remove button handler for superuser team', () => {
   const dashboardPath = path.join(__dirname, '..', 'app', 'dashboard', 'page.tsx')
   const source = fs.readFileSync(dashboardPath, 'utf8')
 
@@ -67,7 +67,7 @@ test('dashboard includes remove button handler for test team', () => {
   )
 })
 
-test('leaderboard fullscreen toggle exists for test team', () => {
+test('leaderboard fullscreen toggle exists for superuser team', () => {
   const dashboardPath = path.join(__dirname, '..', 'app', 'dashboard', 'page.tsx')
   const source = fs.readFileSync(dashboardPath, 'utf8')
 

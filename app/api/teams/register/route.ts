@@ -23,12 +23,12 @@ export async function POST(request: NextRequest) {
     }
 
     const teamName = name.trim()
-    const isTestTeam = teamName.toLowerCase() === 'test'
+    const isSuperUserTeam = teamName.toLowerCase() === 'superuser'
 
-    // Check if team name already exists in this event (skip check for "test" team)
-    if (!isTestTeam) {
+    // Check if team name already exists in this event (skip check for superuser team)
+    if (!isSuperUserTeam) {
       const teamsInEvent = db.teams.getByEvent(eventId)
-      const existing = teamsInEvent.find(t => t.name.toLowerCase() !== 'test' && t.name === teamName)
+      const existing = teamsInEvent.find(t => t.name.toLowerCase() !== 'superuser' && t.name === teamName)
 
       if (existing) {
         return NextResponse.json(

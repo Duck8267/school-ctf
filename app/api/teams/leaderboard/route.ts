@@ -28,8 +28,8 @@ export async function GET(request: NextRequest) {
 
     const teams = db.teams.getByEvent(eventId)
     
-    // Filter out "test" team from leaderboard
-    const visibleTeams = teams.filter(t => t.name.toLowerCase() !== 'test')
+    // Filter out superuser team from leaderboard
+    const visibleTeams = teams.filter(t => t.name.toLowerCase() !== 'superuser')
     
     // Calculate total time for each team and add to team data
     const teamsWithTime = visibleTeams.map(t => ({

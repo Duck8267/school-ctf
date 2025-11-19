@@ -37,11 +37,51 @@ export default function DashboardPage() {
   const [leaderboard, setLeaderboard] = useState<Team[]>([])
   const [event, setEvent] = useState<Event | null>(null)
   const [loading, setLoading] = useState(true)
+  const [removingTeamId, setRemovingTeamId] = useState<number | null>(null)
+  const [isLeaderboardFullScreen, setIsLeaderboardFullScreen] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
     loadData()
   }, [])
+
+  useEffect(() => {
+    if (isLeaderboardFullScreen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isLeaderboardFullScreen])
+  const handleRemoveTeam = async (teamId: number, teamName: string) => {
+    if (!window.confirm(`Remove ${teamName} from the leaderboard?`)) {
+      return
+    }
+
+    setRemovingTeamId(teamId)
+    try {
+      const res = await fetch(`/api/teams/${teamId}`, {
+        method: 'DELETE',
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        alert(data.error || 'Failed to remove team')
+        return
+      }
+
+      await loadData()
+    } catch (error) {
+      console.error('Failed to remove team:', error)
+      alert('Failed to remove team')
+    } finally {
+      setRemovingTeamId(null)
+    }
+  }
+
 
   const loadData = async () => {
     try {
@@ -129,20 +169,27 @@ export default function DashboardPage() {
   }
 
   // Calculate rank - test team won't be in leaderboard, so don't show rank
-  const isTestTeam = team.name.toLowerCase() === 'test'
-  const teamRank = isTestTeam 
+  const isSuperUser = team.name.toLowerCase() === 'superuser'
+  const displayName = isSuperUser ? 'Challenger' : team.name
+  const teamRank = isSuperUser 
     ? null 
     : (leaderboard.findIndex((t) => t.id === team.id) + 1 || leaderboard.length + 1)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-4">
+      {isLeaderboardFullScreen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40"
+          onClick={() => setIsLeaderboardFullScreen(false)}
+        />
+      )}
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-2xl shadow-2xl p-6 mb-6">
           <div className="flex items-start justify-between mb-2">
             <div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                🎯 Welcome, {team.name}!
+                🎯 Welcome, {displayName}!
               </h1>
               {event && (
                 <p className="text-gray-600 mt-1">
@@ -166,9 +213,9 @@ export default function DashboardPage() {
                 📊 Rank #{teamRank}
               </div>
             )}
-            {isTestTeam && (
+            {isSuperUser && (
               <div className="bg-gradient-to-r from-gray-400 to-gray-500 text-white px-6 py-3 rounded-lg font-bold text-xl">
-                🧪 Test Mode
+                🛡️ Superuser Mode
               </div>
             )}
           </div>
@@ -229,11 +276,38 @@ export default function DashboardPage() {
           </div>
 
           {/* Leaderboard Section */}
-          <div className="bg-white rounded-2xl shadow-2xl p-6">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              🏆 Leaderboard
-            </h2>
-            <div className="space-y-2 max-h-96 overflow-y-auto">
+          <div
+            className={`bg-white rounded-2xl shadow-2xl p-6 ${
+              isLeaderboardFullScreen
+                ? 'fixed inset-4 z-50 w-auto h-auto max-w-none overflow-y-auto'
+                : ''
+            }`}
+          >
+            <div
+              className={`flex items-center justify-between mb-4 ${
+                isLeaderboardFullScreen ? 'sticky top-0 bg-white py-2 border-b border-gray-100 z-10' : ''
+              }`}
+            >
+              <h2 className="text-2xl font-bold text-gray-800">
+                🏆 Leaderboard
+              </h2>
+              {isSuperUser && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setIsLeaderboardFullScreen(!isLeaderboardFullScreen)
+                  }}
+                  className="text-sm bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded-full font-semibold transition"
+                >
+                  {isLeaderboardFullScreen ? 'Exit Fullscreen' : 'Fullscreen'}
+                </button>
+              )}
+            </div>
+            <div
+              className={`space-y-2 overflow-y-auto ${
+                isLeaderboardFullScreen ? 'max-h-[calc(100vh-200px)] pr-2' : 'max-h-96'
+              }`}
+            >
               {leaderboard.map((t, index) => {
                 const formatTime = (seconds: number) => {
                   const hours = Math.floor(seconds / 3600)
@@ -276,6 +350,18 @@ export default function DashboardPage() {
                             ⏱️ {formatTime(t.total_time || 0)}
                           </div>
                         </div>
+                        {isSuperUser && t.id !== team.id && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleRemoveTeam(t.id, t.name)
+                            }}
+                            disabled={removingTeamId === t.id}
+                            className="text-xs bg-red-100 text-red-700 px-3 py-1 rounded-full font-semibold hover:bg-red-200 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
+                            {removingTeamId === t.id ? 'Removing...' : 'Remove'}
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

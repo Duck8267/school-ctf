@@ -15,9 +15,9 @@ export async function DELETE(
     }
 
     const requester = db.teams.findById(parseInt(requesterId))
-    if (!requester || requester.name.toLowerCase() !== 'test') {
+    if (!requester || requester.name.toLowerCase() !== 'superuser') {
       return NextResponse.json(
-        { error: 'Only the test team can remove teams' },
+        { error: 'Only the superuser team can remove teams' },
         { status: 403 }
       )
     }
@@ -32,7 +32,7 @@ export async function DELETE(
 
     if (targetId === requester.id) {
       return NextResponse.json(
-        { error: 'Cannot remove the test team itself' },
+        { error: 'Cannot remove the superuser team itself' },
         { status: 400 }
       )
     }
