@@ -1,0 +1,16 @@
+{
+  "id": "secret-number",
+  "title": "The Secret Number",
+  "description": "You are given the outcome of a sequence of operations performed on a secret number x. Work backwards to find the original number.\n\nOperations:\n1. Start with number x\n2. Multiply by 2\n3. Add 10\n4. Divide the result by 4\n5. Subtract 3\n6. Final result is 5\n\nFind the original value of x",
+  "points": 50,
+  "links": [
+    "https://www.mathsisfun.com/definitions/inverse-operation.html"
+  ],
+  "hints": [
+    "Undo the operations in reverse order.",
+    "When you reverse a subtraction, add; when you reverse a division, multiply.",
+    "Try writing each reverse step explicitly to keep track of the number."
+  ],
+  "flag": "FLAG{11}"
+}
+
