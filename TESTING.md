@@ -20,7 +20,7 @@
 
 #### 2. View Dashboard
 - Should see:
-  - Team name and points (0 initially)
+  - Team name and points (60 initially)
   - Rank (#1 if first team)
   - List of challenges (Cryptography Challenge should be visible, locked)
   - Leaderboard showing your team

@@ -1,0 +1,17 @@
+{
+  "id": "console-secret",
+  "title": "Console Secret",
+  "description": "Developers leave clues in the browser console all the time! Your mission is to open the console on this page and read the secret message.\n\nSTEPS:\n1. Press F12 (or Cmd+Option+I on Mac) to open Developer Tools\n2. Click on the \"Console\" tab\n3. Look for the message that appears when this challenge loads\n4. The message includes the exact flag you need to submit\n\nNOTE: The secret only shows up in the console – it will NOT appear on the page itself!",
+  "points": 55,
+  "links": [
+    "https://developer.chrome.com/docs/devtools/console/",
+    "https://firefox-source-docs.mozilla.org/devtools-user/web_console/index.html"
+  ],
+  "hints": [
+    "Make sure you have the Console tab selected in DevTools",
+    "If you do not see the message, refresh the page after opening DevTools",
+    "The flag is printed exactly like FLAG{...} – copy it from the console"
+  ],
+  "flag": "FLAG{console_superstar}"
+}
+

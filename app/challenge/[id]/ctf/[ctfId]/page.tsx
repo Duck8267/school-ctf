@@ -43,6 +43,15 @@ export default function CTFPage() {
 
   useEffect(() => {
     loadCTF()
+    
+    // Set secret cookie for cookie-clue CTF
+    if (ctfId === 'cookie-clue') {
+      document.cookie = 'secret_challenge=cookie_monster_found_me; path=/; max-age=86400'
+    }
+
+    if (ctfId === 'console-secret') {
+      console.log('%cSecret flag: FLAG{console_superstar}', 'color: #f97316; font-size: 16px; font-weight: bold;')
+    }
   }, [challengeId, ctfId])
 
   useEffect(() => {
@@ -272,6 +281,18 @@ export default function CTFPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-4">
+      {/* Hidden secrets for web-basics-challenge CTFs */}
+      {ctfId === 'element-inspector' && (
+        <div className="max-w-4xl mx-auto mb-4">
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white font-semibold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 shadow-lg animate-pulse"
+            data-flag="inspect_infinity"
+          >
+            🔍 Inspect Badge
+            <span className="text-sm">Right-click → Inspect me!</span>
+          </div>
+        </div>
+      )}
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-2xl shadow-2xl p-6 mb-6">
           <Link

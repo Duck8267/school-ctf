@@ -1,0 +1,9 @@
+# Robots.txt for School CTF Platform
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /hidden-files/
+
+# Secret path: robots_know_secrets
+Allow: /challenges/
+

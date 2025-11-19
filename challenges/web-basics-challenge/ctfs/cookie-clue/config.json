@@ -1,0 +1,17 @@
+{
+  "id": "cookie-clue",
+  "title": "Cookie Clue",
+  "description": "Websites use 'cookies' to remember information about you, like your username or preferences. They're like little notes saved in your browser!\n\nYour task: This page has set a cookie with a secret message. Can you find it?\n\nSTEPS:\n1. Open your browser's Developer Tools (Press F12, or right-click → Inspect)\n2. Look for the 'Application' tab (Chrome) or 'Storage' tab (Firefox)\n3. In the left sidebar, expand 'Cookies' and click on this website\n4. Find the cookie named 'secret_challenge'\n5. The value of that cookie is your flag!\n\nSUBMIT IT AS: FLAG{cookie_value_you_found}\n\nNOTE: You need to actually inspect the cookies on this challenge page to find the answer!",
+  "points": 60,
+  "links": [
+    "https://developer.chrome.com/docs/devtools/application/cookies/",
+    "https://www.kaspersky.com/resource-center/definitions/cookies"
+  ],
+  "hints": [
+    "Press F12 to open Developer Tools in most browsers",
+    "In Chrome: Application tab → Cookies. In Firefox: Storage tab → Cookies",
+    "Look for a cookie named 'secret_challenge' - its value is your answer!"
+  ],
+  "flag": "FLAG{cookie_monster_found_me}"
+}
+

@@ -1,0 +1,17 @@
+{
+  "id": "element-inspector",
+  "title": "Element Inspector",
+  "description": "Web browsers let you peek behind the scenes of any webpage! This challenge places a special badge on the page. Inspect it to reveal the hidden code.\n\nSTEPS:\n1. Look near the top of this page for the glowing \"Inspect Badge\"\n2. Right-click the badge and choose \"Inspect\" (or use Ctrl+Shift+I / Cmd+Option+I)\n3. In the Elements panel, find the badge element\n4. Check its data-flag attribute – that's your answer!\n\nNOTE: The badge shows up visually, but the flag only lives inside its HTML attributes.",
+  "points": 45,
+  "links": [
+    "https://developer.chrome.com/docs/devtools/dom/",
+    "https://www.w3schools.com/tags/att_global_data.asp"
+  ],
+  "hints": [
+    "Use the element picker tool in DevTools to highlight the badge",
+    "The attribute is called data-flag",
+    "Copy the text between the quotes after data-flag="
+  ],
+  "flag": "FLAG{inspect_infinity}"
+}
+

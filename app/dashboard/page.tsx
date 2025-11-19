@@ -16,6 +16,11 @@ interface Challenge {
   name: string
   description: string
   unlocked: boolean
+  progress?: {
+    completed: number
+    total: number
+    percent: number
+  }
 }
 
 interface Event {
@@ -59,11 +64,38 @@ export default function DashboardPage() {
 
       const teamData = await teamRes.json()
       const challengesData = await challengesRes.json()
+
+      const challengesWithProgress = await Promise.all(
+        challengesData.map(async (challenge: Challenge) => {
+          try {
+            const res = await fetch(`/api/challenges/${challenge.id}/ctfs`)
+            if (!res.ok) {
+              return challenge
+            }
+            const ctfs = await res.json()
+            const total = ctfs.length || 1
+            const completed = ctfs.filter((ctf: { completed: boolean }) => ctf.completed).length
+            const percent = Math.round((completed / total) * 100)
+
+            return {
+              ...challenge,
+              progress: {
+                completed,
+                total: ctfs.length,
+                percent: ctfs.length === 0 ? 0 : percent,
+              },
+            }
+          } catch (error) {
+            console.error(`Failed to load progress for challenge ${challenge.id}:`, error)
+            return challenge
+          }
+        })
+      )
       const leaderboardData = await leaderboardRes.json()
       const eventData = await eventRes.json()
 
       setTeam(teamData)
-      setChallenges(challengesData)
+      setChallenges(challengesWithProgress)
       setLeaderboard(leaderboardData)
       setEvent(eventData)
     } catch (error) {
@@ -166,17 +198,28 @@ export default function DashboardPage() {
                         <p className="text-sm text-gray-600 mt-1">
                           {challenge.description}
                         </p>
-                      </div>
-                      <div className="ml-4">
-                        {challenge.unlocked ? (
-                          <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
-                            ✅ Unlocked
-                          </span>
-                        ) : (
-                          <span className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-semibold">
-                            🔒 Locked
-                          </span>
-                        )}
+                        <div className="mt-4">
+                          <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
+                            <span>
+                              {challenge.progress
+                                ? `${challenge.progress.completed}/${challenge.progress.total || 0} solved`
+                                : 'Progress unavailable'}
+                            </span>
+                            {challenge.progress && (
+                              <span className="font-semibold text-gray-700">
+                                {challenge.progress.percent === 100 ? '✅ Done' : `${challenge.progress.percent}%`}
+                              </span>
+                            )}
+                          </div>
+                          <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                            <div
+                              className={`h-full rounded-full transition-all duration-500 ${
+                                challenge.progress?.percent === 100 ? 'bg-green-500' : 'bg-blue-500'
+                              }`}
+                              style={{ width: `${challenge.progress?.percent || 0}%` }}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </Link>

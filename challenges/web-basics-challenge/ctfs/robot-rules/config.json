@@ -1,0 +1,17 @@
+{
+  "id": "robot-rules",
+  "title": "Robot Rules",
+  "description": "Websites have a special file called 'robots.txt' that tells search engine robots which pages they can visit! Sometimes interesting directories are listed there.\n\nYour task: Check the robots.txt file of THIS website to find a secret path!\n\nSTEPS:\n1. Look at the URL of this page in your browser\n2. Remove everything after the domain name\n3. Add /robots.txt to the end\n4. For example: if you're on 'example.com/challenge/123', go to 'example.com/robots.txt'\n5. Find the comment that says 'Secret path:' and look at what follows it\n6. Submit it as FLAG{path_you_found}\n\nNOTE: Real websites use robots.txt to tell search engines what to index. Hackers often check this file first to discover hidden directories!",
+  "points": 70,
+  "links": [
+    "https://www.robotstxt.org/",
+    "https://en.wikipedia.org/wiki/Robots.txt"
+  ],
+  "hints": [
+    "Type the main domain of this website, then add /robots.txt",
+    "Look for a line that starts with # (that's a comment in robots.txt)",
+    "The secret path will be mentioned after 'Secret path:' in a comment"
+  ],
+  "flag": "FLAG{robots_know_secrets}"
+}
+

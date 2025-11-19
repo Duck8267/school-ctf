@@ -13,7 +13,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <div className="flex-1">{children}</div>
+        <footer className="bg-gray-900 text-gray-100 text-center text-sm py-4">
+          <span>&copy; {new Date().getFullYear()} Adel ElZemity • </span>
+          <a
+            href="https://adelsamir.com"
+            className="text-blue-300 hover:text-blue-200 underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            adelsamir.com
+          </a>
+        </footer>
+      </body>
     </html>
   )
 }
