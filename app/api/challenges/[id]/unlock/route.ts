@@ -1,22 +1,34 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getChallenge } from '@/lib/challenges'
 import db from '@/lib/db'
-import { cookies } from 'next/headers'
+import { requireTeam, safePath } from '@/lib/auth'
 
 export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const cookieStore = await cookies()
-    const teamId = cookieStore.get('team_id')?.value
+    const result = await requireTeam()
+    if (result.error) return result.error
 
-    if (!teamId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+    const safeId = safePath(params.id)
+    if (!safeId) {
+      return NextResponse.json(
+        { error: 'Invalid challenge id' },
+        { status: 400 }
+      )
     }
 
     const { password } = await request.json()
-    const challenge = getChallenge(params.id)
+
+    if (!password || typeof password !== 'string') {
+      return NextResponse.json(
+        { error: 'Password is required' },
+        { status: 400 }
+      )
+    }
+
+    const challenge = getChallenge(safeId)
 
     if (!challenge) {
       return NextResponse.json(
@@ -32,13 +44,12 @@ export async function POST(
       )
     }
 
-    // Create access if doesn't exist
-    db.challengeAccess.create(parseInt(teamId), params.id)
+    db.challengeAccess.create(result.team.id, safeId)
 
     return NextResponse.json({ success: true })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to unlock challenge' },
+      { error: 'Failed to unlock challenge' },
       { status: 500 }
     )
   }

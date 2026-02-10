@@ -1,29 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getCTFsInChallenge } from '@/lib/challenges'
 import db from '@/lib/db'
-import { cookies } from 'next/headers'
+import { requireTeam, safePath } from '@/lib/auth'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const cookieStore = await cookies()
-    const teamId = cookieStore.get('team_id')?.value
+    const result = await requireTeam()
+    if (result.error) return result.error
 
-    if (!teamId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+    const safeId = safePath(params.id)
+    if (!safeId) {
+      return NextResponse.json(
+        { error: 'Invalid challenge id' },
+        { status: 400 }
+      )
     }
 
-    // In event-based system, challenges are automatically unlocked
-    // No need to check challenge access
-
-    const ctfs = getCTFsInChallenge(params.id)
+    const ctfs = getCTFsInChallenge(safeId)
 
     // Get completion status for each CTF
     const attempts = db.ctfAttempts.getByTeamAndChallenge(
-      parseInt(teamId),
-      params.id
+      result.team.id,
+      safeId
     )
 
     const attemptsMap = new Map(
@@ -44,9 +45,9 @@ export async function GET(
     })
 
     return NextResponse.json(ctfsWithStatus)
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to get CTFs' },
+      { error: 'Failed to get CTFs' },
       { status: 500 }
     )
   }

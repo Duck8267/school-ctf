@@ -1,28 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
 import db from '@/lib/db'
+import { requireSuperuser } from '@/lib/auth'
 
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { teamId: string } }
 ) {
   try {
-    const cookieStore = await cookies()
-    const requesterId = cookieStore.get('team_id')?.value
+    const result = await requireSuperuser()
+    if (result.error) return result.error
 
-    if (!requesterId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-    }
+    const requester = result.team
 
-    const requester = db.teams.findById(parseInt(requesterId))
-    if (!requester || requester.name.toLowerCase() !== 'superuser') {
-      return NextResponse.json(
-        { error: 'Only the superuser team can remove teams' },
-        { status: 403 }
-      )
-    }
-
-    const targetId = parseInt(params.teamId)
+    const targetId = parseInt(params.teamId, 10)
     if (isNaN(targetId)) {
       return NextResponse.json(
         { error: 'Invalid team id' },
@@ -46,12 +36,10 @@ export async function DELETE(
     }
 
     return NextResponse.json({ success: true })
-  } catch (error: any) {
-    console.error('Failed to delete team:', error)
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to delete team' },
+      { error: 'Failed to delete team' },
       { status: 500 }
     )
   }
 }
-

@@ -1,17 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getEvent } from '@/lib/events'
-import { cookies } from 'next/headers'
+import { requireEventId } from '@/lib/auth'
 
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = await cookies()
-    const eventId = cookieStore.get('event_id')?.value
+    const result = await requireEventId()
+    if (result.error) return result.error
 
-    if (!eventId) {
-      return NextResponse.json({ error: 'No event selected' }, { status: 401 })
-    }
-
-    const event = getEvent(eventId)
+    const event = getEvent(result.eventId)
 
     if (!event) {
       return NextResponse.json({ error: 'Event not found' }, { status: 404 })
@@ -24,11 +20,10 @@ export async function GET(request: NextRequest) {
       location: event.location,
       description: event.description,
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to get event' },
+      { error: 'Failed to get event' },
       { status: 500 }
     )
   }
 }
-

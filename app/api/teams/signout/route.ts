@@ -1,18 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
+import { deleteCookie } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = await cookies()
-    cookieStore.delete('team_id')
-    cookieStore.delete('event_id')
+    await deleteCookie('team_id')
+    await deleteCookie('event_id')
 
     return NextResponse.json({ success: true })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to sign out' },
+      { error: 'Failed to sign out' },
       { status: 500 }
     )
   }
 }
-

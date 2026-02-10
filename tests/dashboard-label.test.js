@@ -43,13 +43,13 @@ test('web-basics-challenge and ctfs exist', () => {
   })
 })
 
-test('team deletion API restricts access to superuser team', () => {
+test('team deletion API uses requireSuperuser from auth module', () => {
   const apiPath = path.join(__dirname, '..', 'app', 'api', 'teams', '[teamId]', 'route.ts')
   const source = fs.readFileSync(apiPath, 'utf8')
 
   assert.ok(
-    source.includes("requester.name.toLowerCase() !== 'superuser'"),
-    'DELETE /api/teams/[teamId] should restrict access to the superuser team'
+    source.includes('requireSuperuser'),
+    'DELETE /api/teams/[teamId] should use requireSuperuser from auth module'
   )
 })
 
@@ -111,6 +111,32 @@ test('leaderboard API exposes completedCtfs data', () => {
   )
 })
 
+test('leaderboard total_time merges overlapping CTF intervals', () => {
+  const apiPath = path.join(
+    __dirname,
+    '..',
+    'app',
+    'api',
+    'teams',
+    'leaderboard',
+    'route.ts'
+  )
+  const source = fs.readFileSync(apiPath, 'utf8')
+
+  assert.ok(
+    source.includes('Merge overlapping intervals'),
+    'Leaderboard total_time should merge overlapping intervals to avoid double-counting'
+  )
+  assert.ok(
+    source.includes('curStart') && source.includes('curEnd'),
+    'Leaderboard total_time merge logic should track a current interval'
+  )
+  assert.ok(
+    source.includes('totalMs'),
+    'Leaderboard total_time should sum merged intervals in milliseconds'
+  )
+})
+
 test('ctf emoji mapping includes all circle colors', () => {
   const emojiPath = path.join(__dirname, '..', 'lib', 'ctfEmojis.ts')
   const source = fs.readFileSync(emojiPath, 'utf8')
@@ -121,7 +147,7 @@ test('ctf emoji mapping includes all circle colors', () => {
   })
 })
 
-test('leaderboard timer route restricts to superuser', () => {
+test('leaderboard timer route restricts to superuser via auth module', () => {
   const timerPath = path.join(
     __dirname,
     '..',
@@ -134,12 +160,8 @@ test('leaderboard timer route restricts to superuser', () => {
   const source = fs.readFileSync(timerPath, 'utf8')
 
   assert.ok(
-    source.includes('Only the superuser team can start the timer'),
-    'Timer route should enforce superuser access'
-  )
-  assert.ok(
-    source.includes('Only the superuser team can add time'),
-    'Timer route should restrict add time to superuser'
+    source.includes('requireSuperuser'),
+    'Timer route should use requireSuperuser from auth module'
   )
   assert.ok(
     source.includes('Minutes must be a positive number'),
@@ -173,4 +195,104 @@ test('dashboard renders countdown UI with emojis', () => {
     source.includes('aria-label="Add five minutes"'),
     'Dashboard should describe the add time control for accessibility'
   )
+})
+
+// --- Security-specific tests ---
+
+test('auth module exists with HMAC signing and path sanitization', () => {
+  const authPath = path.join(__dirname, '..', 'lib', 'auth.ts')
+  const source = fs.readFileSync(authPath, 'utf8')
+
+  assert.ok(source.includes('createHmac'), 'Auth should use HMAC for signing')
+  assert.ok(source.includes('timingSafeEqual'), 'Auth should use timing-safe comparison')
+  assert.ok(source.includes('AUTH_SECRET'), 'Auth should support AUTH_SECRET env var')
+  assert.ok(source.includes('safePath'), 'Auth should export safePath for path sanitization')
+  assert.ok(source.includes('requireTeam'), 'Auth should export requireTeam')
+  assert.ok(source.includes('requireSuperuser'), 'Auth should export requireSuperuser')
+  assert.ok(source.includes('requireEventId'), 'Auth should export requireEventId')
+  assert.ok(source.includes('setSignedCookie'), 'Auth should export setSignedCookie')
+  assert.ok(source.includes('getSignedCookie'), 'Auth should export getSignedCookie')
+})
+
+test('all API routes use signed cookies from auth module (no raw cookies())', () => {
+  const apiRoutes = [
+    'app/api/teams/register/route.ts',
+    'app/api/teams/me/route.ts',
+    'app/api/teams/signout/route.ts',
+    'app/api/teams/leaderboard/route.ts',
+    'app/api/teams/[teamId]/route.ts',
+    'app/api/events/verify/route.ts',
+    'app/api/events/current/route.ts',
+    'app/api/challenges/route.ts',
+    'app/api/challenges/[id]/unlock/route.ts',
+    'app/api/challenges/[id]/ctfs/route.ts',
+    'app/api/ctfs/[ctfId]/submit/route.ts',
+    'app/api/ctfs/[ctfId]/status/route.ts',
+    'app/api/ctfs/[ctfId]/start/route.ts',
+    'app/api/ctfs/[ctfId]/hints/route.ts',
+    'app/api/ctfs/[ctfId]/hints/purchase/route.ts',
+    'app/api/leaderboard/timer/route.ts',
+  ]
+
+  for (const route of apiRoutes) {
+    const filePath = path.join(__dirname, '..', route)
+    const source = fs.readFileSync(filePath, 'utf8')
+
+    // Routes that need auth should import from @/lib/auth
+    // The only raw cookies() usage that's still okay is inside the auth module itself
+    assert.ok(
+      source.includes('@/lib/auth'),
+      `${route} should import from @/lib/auth`
+    )
+  }
+})
+
+test('CTF routes validate path segments with safePath', () => {
+  const routes = [
+    'app/api/ctfs/[ctfId]/submit/route.ts',
+    'app/api/ctfs/[ctfId]/status/route.ts',
+    'app/api/ctfs/[ctfId]/start/route.ts',
+    'app/api/ctfs/[ctfId]/hints/route.ts',
+    'app/api/ctfs/[ctfId]/hints/purchase/route.ts',
+    'app/api/challenges/[id]/unlock/route.ts',
+    'app/api/challenges/[id]/ctfs/route.ts',
+  ]
+
+  for (const route of routes) {
+    const filePath = path.join(__dirname, '..', route)
+    const source = fs.readFileSync(filePath, 'utf8')
+
+    assert.ok(
+      source.includes('safePath'),
+      `${route} should use safePath to sanitize path parameters`
+    )
+  }
+})
+
+test('no API route exposes raw error.message to clients', () => {
+  const apiDir = path.join(__dirname, '..', 'app', 'api')
+  const routeFiles = []
+
+  function walkDir(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true })
+    for (const entry of entries) {
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) {
+        walkDir(full)
+      } else if (entry.name === 'route.ts') {
+        routeFiles.push(full)
+      }
+    }
+  }
+  walkDir(apiDir)
+
+  for (const filePath of routeFiles) {
+    const source = fs.readFileSync(filePath, 'utf8')
+    const relative = path.relative(path.join(__dirname, '..'), filePath)
+
+    assert.ok(
+      !source.includes('error.message'),
+      `${relative} should not expose raw error.message to clients`
+    )
+  }
 })

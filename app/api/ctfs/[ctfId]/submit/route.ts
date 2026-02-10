@@ -1,48 +1,63 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getCTF } from '@/lib/challenges'
 import db from '@/lib/db'
-import { cookies } from 'next/headers'
+import { requireTeam, safePath } from '@/lib/auth'
 
 export async function POST(
   request: NextRequest,
   { params }: { params: { ctfId: string } }
 ) {
   try {
-    const cookieStore = await cookies()
-    const teamId = cookieStore.get('team_id')?.value
+    const result = await requireTeam()
+    if (result.error) return result.error
 
-    if (!teamId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+    const safeCtfId = safePath(params.ctfId)
+    if (!safeCtfId) {
+      return NextResponse.json(
+        { error: 'Invalid CTF id' },
+        { status: 400 }
+      )
     }
 
     const { challengeId, flag } = await request.json()
 
-    const ctf = getCTF(challengeId, params.ctfId)
+    const safeChallengeId = safePath(challengeId)
+    if (!safeChallengeId) {
+      return NextResponse.json(
+        { error: 'Invalid challenge id' },
+        { status: 400 }
+      )
+    }
+
+    if (!flag || typeof flag !== 'string') {
+      return NextResponse.json(
+        { error: 'Flag is required' },
+        { status: 400 }
+      )
+    }
+
+    const ctf = getCTF(safeChallengeId, safeCtfId)
 
     if (!ctf) {
       return NextResponse.json({ error: 'CTF not found' }, { status: 404 })
     }
 
+    const teamId = result.team.id
+
     // Get or create attempt
     let attempt = db.ctfAttempts.findByTeamAndCTF(
-      parseInt(teamId),
-      params.ctfId,
-      challengeId
+      teamId,
+      safeCtfId,
+      safeChallengeId
     )
 
     if (!attempt) {
-      // Create attempt with start time
       const startTime = new Date().toISOString()
-      db.ctfAttempts.create(
-        parseInt(teamId),
-        params.ctfId,
-        challengeId,
-        startTime
-      )
+      db.ctfAttempts.create(teamId, safeCtfId, safeChallengeId, startTime)
       attempt = db.ctfAttempts.findByTeamAndCTF(
-        parseInt(teamId),
-        params.ctfId,
-        challengeId
+        teamId,
+        safeCtfId,
+        safeChallengeId
       )!
     }
 
@@ -60,10 +75,9 @@ export async function POST(
         .replace(/\}$/i, '')
         .trim()
 
-    const providedFlag = flag?.toString().trim() || ''
+    const providedFlag = flag.trim()
     const correctFlag = ctf.flag.trim()
 
-    // Check flag (allow submissions with or without FLAG{} wrapper, case-insensitive)
     const isExactMatch =
       providedFlag.toLowerCase() === correctFlag.toLowerCase()
     const isNormalizedMatch =
@@ -73,17 +87,13 @@ export async function POST(
     const isCorrect = isExactMatch || isNormalizedMatch
 
     if (isCorrect) {
-      // Calculate time taken (in seconds)
       const startTime = new Date(attempt.start_time!).getTime()
       const endTime = new Date().getTime()
       const timeTaken = Math.floor((endTime - startTime) / 1000)
 
-      // Award points
       const endTimeStr = new Date().toISOString()
       db.ctfAttempts.update(attempt.id, endTimeStr, 1, ctf.points)
-
-      // Update team total points
-      db.teams.updatePoints(parseInt(teamId), ctf.points)
+      db.teams.updatePoints(teamId, ctf.points)
 
       return NextResponse.json({
         success: true,
@@ -98,9 +108,9 @@ export async function POST(
         message: 'Incorrect flag. Keep trying!',
       })
     }
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to submit flag' },
+      { error: 'Failed to submit flag' },
       { status: 500 }
     )
   }

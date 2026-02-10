@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getEventByPassword } from '@/lib/events'
-import { cookies } from 'next/headers'
+import { setSignedCookie } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
-    const { password } = await request.json()
+    const body = await request.json().catch(() => ({} as any))
+    const password = (body as any)?.password
 
-    if (!password) {
+    if (!password || typeof password !== 'string') {
       return NextResponse.json(
         { error: 'Password is required' },
         { status: 400 }
@@ -22,14 +23,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Set event cookie
-    const cookieStore = await cookies()
-    cookieStore.set('event_id', event.id, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 30, // 30 days
-    })
+    await setSignedCookie('event_id', event.id)
 
     return NextResponse.json({
       success: true,
@@ -41,11 +35,10 @@ export async function POST(request: NextRequest) {
         description: event.description,
       },
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to verify event password' },
+      { error: 'Failed to verify event password' },
       { status: 500 }
     )
   }
 }
-

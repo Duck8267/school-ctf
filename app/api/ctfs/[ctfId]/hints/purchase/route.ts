@@ -1,38 +1,47 @@
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/lib/db'
-import { cookies } from 'next/headers'
+import { requireTeam, safePath } from '@/lib/auth'
 
 export async function POST(
   request: NextRequest,
   { params }: { params: { ctfId: string } }
 ) {
   try {
-    const cookieStore = await cookies()
-    const teamId = cookieStore.get('team_id')?.value
+    const result = await requireTeam()
+    if (result.error) return result.error
 
-    if (!teamId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-    }
-
-    const { challengeId, hintIndex } = await request.json()
-
-    if (hintIndex === undefined || hintIndex === null) {
+    const safeCtfId = safePath(params.ctfId)
+    if (!safeCtfId) {
       return NextResponse.json(
-        { error: 'hintIndex is required' },
+        { error: 'Invalid CTF id' },
         { status: 400 }
       )
     }
 
-    const team = db.teams.findById(parseInt(teamId))
-    if (!team) {
-      return NextResponse.json({ error: 'Team not found' }, { status: 404 })
+    const { challengeId, hintIndex } = await request.json()
+
+    const safeChallengeId = safePath(challengeId)
+    if (!safeChallengeId) {
+      return NextResponse.json(
+        { error: 'Invalid challenge id' },
+        { status: 400 }
+      )
     }
+
+    if (hintIndex === undefined || hintIndex === null || typeof hintIndex !== 'number' || hintIndex < 0) {
+      return NextResponse.json(
+        { error: 'Valid hintIndex is required' },
+        { status: 400 }
+      )
+    }
+
+    const team = result.team
 
     // Check if hint already purchased
     const purchasedHints = db.hintPurchases.getByTeamAndCTF(
-      parseInt(teamId),
-      params.ctfId,
-      challengeId
+      team.id,
+      safeCtfId,
+      safeChallengeId
     )
 
     if (purchasedHints.includes(hintIndex)) {
@@ -48,19 +57,21 @@ export async function POST(
     // Check if team has enough points
     if (team.total_points < cost) {
       return NextResponse.json(
-        { error: 'Insufficient points', cost, currentPoints: team.total_points },
+        {
+          error: 'Insufficient points',
+          cost,
+          currentPoints: team.total_points,
+        },
         { status: 400 }
       )
     }
 
-    // Deduct points
-    const newTotalPoints = db.teams.deductPoints(parseInt(teamId), cost)
+    const newTotalPoints = db.teams.deductPoints(team.id, cost)
 
-    // Record purchase
     db.hintPurchases.create(
-      parseInt(teamId),
-      params.ctfId,
-      challengeId,
+      team.id,
+      safeCtfId,
+      safeChallengeId,
       hintIndex,
       cost
     )
@@ -70,11 +81,10 @@ export async function POST(
       cost,
       newTotalPoints,
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to purchase hint' },
+      { error: 'Failed to purchase hint' },
       { status: 500 }
     )
   }
 }
-

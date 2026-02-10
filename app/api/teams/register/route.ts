@@ -1,21 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/lib/db'
-import { cookies } from 'next/headers'
+import { requireEventId, setSignedCookie } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
     const { name } = await request.json()
-    const cookieStore = await cookies()
-    const eventId = cookieStore.get('event_id')?.value
 
-    if (!eventId) {
-      return NextResponse.json(
-        { error: 'No event selected. Please enter event password first.' },
-        { status: 401 }
-      )
-    }
+    const eventResult = await requireEventId()
+    if (eventResult.error) return eventResult.error
+    const eventId = eventResult.eventId
 
-    if (!name || name.trim().length === 0) {
+    if (!name || typeof name !== 'string' || name.trim().length === 0) {
       return NextResponse.json(
         { error: 'Team name is required' },
         { status: 400 }
@@ -23,12 +18,22 @@ export async function POST(request: NextRequest) {
     }
 
     const teamName = name.trim()
+
+    if (teamName.length > 50) {
+      return NextResponse.json(
+        { error: 'Team name must be 50 characters or less' },
+        { status: 400 }
+      )
+    }
+
     const isSuperUserTeam = teamName.toLowerCase() === 'superuser'
 
     // Check if team name already exists in this event (skip check for superuser team)
     if (!isSuperUserTeam) {
       const teamsInEvent = db.teams.getByEvent(eventId)
-      const existing = teamsInEvent.find(t => t.name.toLowerCase() !== 'superuser' && t.name === teamName)
+      const existing = teamsInEvent.find(
+        (t) => t.name.toLowerCase() !== 'superuser' && t.name === teamName
+      )
 
       if (existing) {
         return NextResponse.json(
@@ -38,25 +43,18 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Create team
-    const teamId = db.teams.create(name.trim(), eventId)
+    const teamId = db.teams.create(teamName, eventId)
 
-    // Set cookie
-    cookieStore.set('team_id', teamId.toString(), {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 30, // 30 days
-    })
+    await setSignedCookie('team_id', teamId.toString())
 
     return NextResponse.json({
       success: true,
       teamId,
-      teamName: name.trim(),
+      teamName,
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to register team' },
+      { error: 'Failed to register team' },
       { status: 500 }
     )
   }

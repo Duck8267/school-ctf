@@ -1,30 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
-import db from '@/lib/db'
-import { cookies } from 'next/headers'
+import { requireTeam } from '@/lib/auth'
 
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = await cookies()
-    const teamId = cookieStore.get('team_id')?.value
-
-    if (!teamId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-    }
-
-    const team = db.teams.findById(parseInt(teamId))
-
-    if (!team) {
-      return NextResponse.json({ error: 'Team not found' }, { status: 404 })
-    }
+    const result = await requireTeam()
+    if (result.error) return result.error
 
     return NextResponse.json({
-      id: team.id,
-      name: team.name,
-      total_points: team.total_points,
+      id: result.team.id,
+      name: result.team.name,
+      total_points: result.team.total_points,
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to get team info' },
+      { error: 'Failed to get team info' },
       { status: 500 }
     )
   }

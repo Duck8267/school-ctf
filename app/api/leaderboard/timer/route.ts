@@ -1,14 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
 import db from '@/lib/db'
+import { requireSuperuser } from '@/lib/auth'
 
 function buildTimerResponse() {
-  const status = db.leaderboardTimer.getStatus()
-  if (!status) {
-    return null
-  }
-
-  return status
+  return db.leaderboardTimer.getStatus()
 }
 
 export async function GET() {
@@ -16,9 +11,9 @@ export async function GET() {
     return NextResponse.json({
       timer: buildTimerResponse(),
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to load timer' },
+      { error: 'Failed to load timer' },
       { status: 500 }
     )
   }
@@ -26,20 +21,8 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = await cookies()
-    const teamId = cookieStore.get('team_id')?.value
-
-    if (!teamId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-    }
-
-    const team = db.teams.findById(parseInt(teamId, 10))
-    if (!team || team.name.toLowerCase() !== 'superuser') {
-      return NextResponse.json(
-        { error: 'Only the superuser team can start the timer' },
-        { status: 403 }
-      )
-    }
+    const result = await requireSuperuser()
+    if (result.error) return result.error
 
     const body = await request.json().catch(() => ({}))
     const minutes = Number(body.minutes)
@@ -67,9 +50,9 @@ export async function POST(request: NextRequest) {
         isActive: true,
       },
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to start timer' },
+      { error: 'Failed to start timer' },
       { status: 500 }
     )
   }
@@ -77,20 +60,8 @@ export async function POST(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
-    const cookieStore = await cookies()
-    const teamId = cookieStore.get('team_id')?.value
-
-    if (!teamId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-    }
-
-    const team = db.teams.findById(parseInt(teamId, 10))
-    if (!team || team.name.toLowerCase() !== 'superuser') {
-      return NextResponse.json(
-        { error: 'Only the superuser team can add time' },
-        { status: 403 }
-      )
-    }
+    const result = await requireSuperuser()
+    if (result.error) return result.error
 
     const body = await request.json().catch(() => ({}))
     const minutes = body.minutes === undefined ? 5 : Number(body.minutes)
@@ -110,16 +81,17 @@ export async function PATCH(request: NextRequest) {
       )
     }
 
-    const updatedStatus = db.leaderboardTimer.extend(Math.round(minutes * 60))
+    const updatedStatus = db.leaderboardTimer.extend(
+      Math.round(minutes * 60)
+    )
 
     return NextResponse.json({
       timer: updatedStatus,
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to add time' },
+      { error: 'Failed to add time' },
       { status: 500 }
     )
   }
 }
-

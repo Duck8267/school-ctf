@@ -10,6 +10,7 @@ primary_region = "iad"
 
 [env]
   NODE_ENV = "production"
+  # AUTH_SECRET must be set via `fly secrets set AUTH_SECRET=<random-hex-string>`
 
 [http_service]
   internal_port = 3000

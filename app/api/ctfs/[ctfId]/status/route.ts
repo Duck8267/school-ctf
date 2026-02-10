@@ -1,33 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server'
 import db from '@/lib/db'
-import { cookies } from 'next/headers'
+import { requireTeam, safePath } from '@/lib/auth'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: { ctfId: string } }
 ) {
   try {
-    const cookieStore = await cookies()
-    const teamId = cookieStore.get('team_id')?.value
+    const result = await requireTeam()
+    if (result.error) return result.error
 
-    if (!teamId) {
-      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+    const safeCtfId = safePath(params.ctfId)
+    if (!safeCtfId) {
+      return NextResponse.json(
+        { error: 'Invalid CTF id' },
+        { status: 400 }
+      )
     }
 
     const searchParams = request.nextUrl.searchParams
     const challengeId = searchParams.get('challengeId')
 
-    if (!challengeId) {
+    const safeChallengeId = challengeId ? safePath(challengeId) : null
+    if (!safeChallengeId) {
       return NextResponse.json(
-        { error: 'challengeId required' },
+        { error: 'Valid challengeId required' },
         { status: 400 }
       )
     }
 
     const attempt = db.ctfAttempts.findByTeamAndCTF(
-      parseInt(teamId),
-      params.ctfId,
-      challengeId
+      result.team.id,
+      safeCtfId,
+      safeChallengeId
     )
 
     if (!attempt) {
@@ -44,9 +49,9 @@ export async function GET(
       endTime: attempt.end_time,
       pointsEarned: attempt.points_earned || 0,
     })
-  } catch (error: any) {
+  } catch {
     return NextResponse.json(
-      { error: error.message || 'Failed to get CTF status' },
+      { error: 'Failed to get CTF status' },
       { status: 500 }
     )
   }
