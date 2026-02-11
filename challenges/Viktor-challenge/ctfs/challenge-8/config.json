@@ -1,0 +1,14 @@
+{
+"id": "cti-wayback-08b",
+"title": "Archived Evidence",
+"description": "Investigate the website 'https://www.offensive-security.com' using the Wayback Machine. Identify the earliest archived snapshot and extract the last word from the page title.",
+"points": 150,
+"links": ["https://your-ctf-site.com/cti-wayback-08b"],
+"hints": [
+"Use web.archive.org.",
+"Select the earliest available snapshot.",
+"Check the browser tab title or HTML title tag."
+],
+"flag": "FLAG{training}"
+}
+

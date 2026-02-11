@@ -1,0 +1,18 @@
+{
+  "id": "xor-single-key",
+  "title": "XOR With a Twist",
+  "description": "XOR encryption uses a key to scramble data.\n\nYour task: Decrypt the following hex string using a single-byte XOR key:\n\n1d0f141f3b0e1c3a1d0f1c0e3a1b\n\nHint: The flag format is FLAG{decrypted_text}",
+  "points": 300,
+  "photo": null,
+  "links": [
+    "https://en.wikipedia.org/wiki/XOR_cipher"
+  ],
+  "hints": [
+    "Try brute forcing a single-byte key",
+    "Look for readable ASCII output",
+    "CyberChef has an XOR Brute Force tool"
+  ],
+  "flag": "FLAG{xor_is_powerful}"
+}
+
+

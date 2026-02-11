@@ -1,0 +1,13 @@
+{
+"id": "cti-breach-07b",
+"title": "Breach Exposure",
+"description": "An employee's email address 'bluewhale@outlook.com' may have appeared in a data breach. Use Have I Been Pwned to investigate. Identify the first listed breach.",
+"points": 100,
+"links": ["https://your-ctf-site.com/cti-breach-07b"],
+"hints": [
+"Enter the email address into haveibeenpwned.com.",
+"Look at the 'Breaches you were pwned in' section.",
+"Use lowercase letters and underscores."
+],
+"flag": "FLAG{canva}"
+}

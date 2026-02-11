@@ -1,0 +1,14 @@
+{
+"id": "cti-exif-05b",
+"title": "Metadata Trail",
+"description": "An image shared by a threat actor contains GPS data in its EXIF metadata. Extract the GPS longitude and round it to two decimal places.",
+"points": 175,
+"links": ["https://your-ctf-site.com/assets/metadata-image.jpg"],
+"hints": [
+"Use an online EXIF data viewer.",
+"Look for 'GPS Longitude' in the metadata.",
+"Round the value to two decimal places."
+],
+"flag": "FLAG{0.12}"
+}
+

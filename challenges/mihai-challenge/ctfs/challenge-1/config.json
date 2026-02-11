@@ -1,0 +1,14 @@
+{
+"id": "cti-ip-01",
+"title": "Where in the World?",
+"description": "A suspicious login attempt was detected from IP address '175.144.81.121'. Your job is to identify which country this IP address is registered to. Use a free IP lookup tool to find the country code (e.g., 'US' for United States, 'GB' for United Kingdom).",
+"points": 75,
+"links": ["https://your-ctf-site.com/cti-challenge1"],
+"hints": [
+"Try searching for 'IP lookup tool' or 'IP geolocation' in your browser.",
+"Websites like ipinfo.io or iplocation.net can help you nd this information.",
+"The ag format is FLAG{COUNTRYCODE} where COUNTRYCODE is the two-letter code."
+],
+" ag": "FLAG{MY}"
+}
+

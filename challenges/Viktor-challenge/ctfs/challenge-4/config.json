@@ -1,0 +1,13 @@
+{
+"id": "cti-dns-04b",
+"title": "Mail Server Recon",
+"description": "A suspicious domain 'tryhackme.org' has been identified. Use a DNS lookup tool to find its primary MX record. Extract only the mail server name (before the first dot).",
+"points": 150,
+"links": ["https://your-ctf-site.com/cti-dns-04b"],
+"hints": [
+"Search for an MX record lookup tool.",
+"Use sites like dnschecker.org or mxtoolbox.com.",
+"Ignore everything after the first dot."
+],
+"flag": "FLAG{aspmx}"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "reverse-decode",
+  "title": "Backwards Thinking",
+  "description": "Sometimes the simplest trick is reversing the data.\n\nYour task: Decode the following message:\n\n=}dlrow_olleh{GALF\n\nHint: The flag format is FLAG{decrypted_text}",
+  "points": 325,
+  "photo": null,
+  "links": [
+    "https://gchq.github.io/CyberChef/"
+  ],
+  "hints": [
+    "Try reversing the string",
+    "The text already resembles a flag",
+    "No extra decoding may be required"
+  ],
+  "flag": "FLAG{hello_world}"
+}
+
+
