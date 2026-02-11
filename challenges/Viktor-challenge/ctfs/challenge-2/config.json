@@ -1,0 +1,13 @@
+{
+"id": "cti-whois-02b",
+"title": "Registration Records",
+"description": "Investigate the domain 'example-security.net' using a WHOIS lookup tool. Determine the year the domain was registered.",
+"points": 100,
+"links": ["https://your-ctf-site.com/cti-whois-02b"],
+"hints": [
+"Use a WHOIS lookup service.",
+"Look for 'Creation Date' or 'Registered On'.",
+"The flag format is FLAG{YYYY}."
+],
+"flag": "FLAG{2016}"
+}

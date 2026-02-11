@@ -1,0 +1,18 @@
+{
+  "id": "base64-caesar",
+  "title": "Layered Encoding",
+  "description": "Sometimes data is encoded multiple times.\n\nYour task: Decode the following message:\n\nSkxCR3tkbHF4aF9sYXllcn0=\n\nHint: The flag format is FLAG{decrypted_text}",
+  "points": 250,
+  "photo": null,
+  "links": [
+    "https://gchq.github.io/CyberChef/"
+  ],
+  "hints": [
+    "Try Base64 decoding first",
+    "The result is still encrypted",
+    "A Caesar shift of 3 may help"
+  ],
+  "flag": "FLAG{double_layers}"
+}
+
+

@@ -1,0 +1,14 @@
+{
+"id": "cti-final-10b",
+"title": "Mini OSINT Chain",
+"description": "Investigate the domain 'academy-example.org'. Step 1: Use WHOIS to identify the registrar. Step 2: Use DNS lookup to find the first IPv4 A record. Step 3: Use IP geolocation to identify the country code. Combine the results as REGISTRAR_IP_COUNTRY (uppercase, registrar = first word only).",
+"points": 300,
+"links": ["https://your-ctf-site.com/cti-final-10b"],
+"hints": [
+"Break the task into three separate steps.",
+"Reuse tools from previous challenges.",
+"Follow the exact formatting rules."
+],
+"flag": "FLAG{NAMECHEAP_93.184.216.34_US}"
+}
+

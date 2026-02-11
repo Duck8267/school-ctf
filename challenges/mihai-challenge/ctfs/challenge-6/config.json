@@ -1,0 +1,13 @@
+{
+"id": "cti-username-06",
+"title": "The Digital Footprint",
+"description": "We identi ed a suspicious username: 'cyberspyfromcanterbury'. Use the ' namechk.com' tool to nd out how many platforms this username appears on from every website they check for. The ag is that number.",
+"points": 125,
+"links": ["https://your-ctf-site.com/cti-challenge6"],
+"hints": [
+"Search for 'username checker' or 'username search tool'.",
+"Count only the platforms where the username exists (shown in green/found)."
+],
+" ag": "FLAG{4}"
+}
+

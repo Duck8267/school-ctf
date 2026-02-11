@@ -1,0 +1,11 @@
+<script>
+let isAuthorized = false;
+
+function checkAccess() {
+  if (isAuthorized) {
+    document.body.innerText = "FLAG{logic_hacker}";
+  }
+}
+</script>
+
+<button onclick="checkAccess()">Verify</button>

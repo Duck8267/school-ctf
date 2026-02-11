@@ -1,0 +1,10 @@
+{ 
+"id": "final-10", 
+"title": "The Grand Finale", 
+"description": "This string has been through three layers of protection: It was converted to Hex, then Rot13, then Reversed. Can you undo it?", 
+"points": 250, 
+"links": ["https://your-ctf-site.com/final-challenge.txt"], 
+"hints": ["Use CyberChef and add operations in this order: 'Reverse', 'ROT13', and 'From Hex'.", "Check the 'Amount' in ROT13; the default is 13."], 
+"flag": "FLAG{master_decryptor_2026}" 
+}
+

@@ -1,0 +1,14 @@
+{
+"id": "cti-username-06b",
+"title": "Online Footprint",
+"description": "The username 'silentobserver22' has been linked to suspicious activity. Use a username checking tool to determine how many platforms show this username as existing.",
+"points": 125,
+"links": ["https://your-ctf-site.com/cti-username-06b"],
+"hints": [
+"Search for a username availability checker.",
+"Count only platforms where the username exists.",
+"Ignore unavailable or unknown results."
+],
+"flag": "FLAG{3}"
+}
+

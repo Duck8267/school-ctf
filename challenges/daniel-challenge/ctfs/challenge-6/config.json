@@ -1,0 +1,20 @@
+{
+  "id": "url-encoding-trap",
+  "title": "URL Encoding Trap",
+  "description": "URL encoding replaces unsafe ASCII characters with a '%' followed by two hexadecimal digits.\n\nYour task: Decode the following string:\n\nFLAG%7Burl_encoding_is_sneaky%7D\n\nHint: The flag format is FLAG{decrypted_text}",
+  "points": 200,
+  "photo": null,
+  "links": [
+    "https://en.wikipedia.org/wiki/Percent-encoding"
+  ],
+  "hints": [
+    "Look for the URL Decode operation",
+    "Only certain characters are encoded",
+    "The text already contains the word FLAG"
+  ],
+  "flag": "FLAG{url_encoding_is_sneaky}"
+}
+
+
+
+

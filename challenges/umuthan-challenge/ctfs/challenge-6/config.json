@@ -1,0 +1,10 @@
+{ 
+"id": "localstorage-06", 
+"title": "Forgotten Memory", 
+"description": "Websites don't just use cookies; they also use 'Local Storage' to remember  things. Check if anything was left behind there.", 
+"points": 100, 
+"links": ["https://your-ctf-site.com/challenge6"], 
+"hints": ["F12 > Application > Local Storage.", "Look for a key named 'secret_vault'."], 
+"flag": "FLAG{storage_is_not_secure}" 
+} 
+

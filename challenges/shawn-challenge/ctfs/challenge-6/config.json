@@ -1,0 +1,11 @@
+{
+"id": "OSINT-06",
+"title": "Github Forensics",
+"description": "A client has requested assistance after a network compromise caused a full outage. Preliminary forensic analysis shows the attack originated from a single user account, indicating a potential insider threat. Investigate the incident to identify the insider and determine the actions taken during the attack. You have been given the compromised user's github profile - https://github.com/EMarseille99 What API key was added to the repository?",
+"points": 75,
+"links": ["https://your-ctf-site.com/OSINT-challenge-6"],
+"hints": [
+"Take a look throughout the years for activity on the account."
+],
+"flag": "FLAG{MY}"
+}

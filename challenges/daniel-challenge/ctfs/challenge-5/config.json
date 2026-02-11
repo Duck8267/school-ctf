@@ -1,0 +1,17 @@
+{
+  "id": "caesar-reloaded",
+  "title": "Caesar Cipher Reloaded",
+  "description": "The Caesar cipher shifts letters by a fixed amount, but this time the shift is less obvious.\n\nYour task: Decode the following message:\n\nkrod{fdhvdu_flskhu}\n\nHint: The flag format is FLAG{decrypted_text}",
+  "points": 175,
+  "photo": null,
+  "links": [
+    "https://en.wikipedia.org/wiki/Caesar_cipher"
+  ],
+  "hints": [
+    "Try a shift of 3",
+    "Only letters are shifted, not symbols",
+    "CyberChef has a brute force option"
+  ],
+  "flag": "FLAG{caesar_cipher}"
+}
+

@@ -1,0 +1,14 @@
+{
+"id": "cti-email-03b",
+"title": "Tracing the Sender",
+"description": "A phishing email was reported by an employee. You have been given the email headers. Identify the originating IP address by locating the first 'Received: from' entry. Extract the last octet of that IP address.",
+"points": 125,
+"links": ["https://your-ctf-site.com/email-headers-03b.txt"],
+"hints": [
+"Look for the first 'Received: from' line.",
+"The IP address is usually in square brackets.",
+"The flag format is FLAG{lastoctet}."
+],
+"flag": "FLAG{42}"
+}
+

@@ -1,0 +1,13 @@
+{
+"id": "cti-email-03",
+"title": "The Email Trail",
+"description": "A phishing email was sent to our organization. We've provided the email headers in a text file. Find the originating IP address (the first 'Received: from' entry). The flag is hidden as the last octet of that IP address.",
+"points": 125,
+"links": "<a href=\"/assets/Email Headers Challenge.pdf\">View E-mail</a>",
+"hints": [
+"Look for lines starting with 'Received: from' in the headers.",
+"The IP address is in square brackets [xxx.xxx.xxx.xxx].",
+"The ag format is FLAG{lastoctet} where lastoctet is the number after the last dot."
+],
+" ag": "FLAG{89}"
+}

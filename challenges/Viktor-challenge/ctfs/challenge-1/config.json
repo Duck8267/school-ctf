@@ -1,0 +1,14 @@
+{
+"id": "cti-ip-01b",
+"title": "IP Origin Check",
+"description": "A suspicious login attempt was detected from IP address '8.34.92.17'. Your task is to identify which country this IP address is registered to using an IP geolocation tool.",
+"points": 75,
+"links": ["https://your-ctf-site.com/cti-ip-01b"],
+"hints": [
+"Search for an IP geolocation lookup tool.",
+"Websites like ipinfo.io or iplocation.net can help.",
+"The flag format is FLAG{COUNTRYCODE}."
+],
+"flag": "FLAG{US}"
+}
+

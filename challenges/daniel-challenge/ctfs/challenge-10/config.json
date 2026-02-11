@@ -1,0 +1,18 @@
+{
+  "id": "triple-layer-nightmare",
+  "title": "Triple-Layer Nightmare",
+  "description": "This challenge uses multiple layers of encoding.\n\nYour task: Decode the following string:\n\nNTQ2YzQxNTc3YjY4NmY3NzVmNjk3MzVmNjg2MTcyNjQ3ZA==\n\nHint: The flag format is FLAG{decrypted_text}",
+  "points": 400,
+  "photo": null,
+  "links": [
+    "https://gchq.github.io/CyberChef/"
+  ],
+  "hints": [
+    "Try Base64 decoding first",
+    "The result may be hexadecimal",
+    "Convert step by step and do not rush"
+  ],
+  "flag": "FLAG{how_is_hard}"
+}
+
+

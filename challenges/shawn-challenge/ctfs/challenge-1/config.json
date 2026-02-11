@@ -1,0 +1,12 @@
+{ 
+"id": "OSINT-01", 
+"title": "Malware threat intel", 
+"description": "You work for the security operations centre (SOC) within  an insurance company and some   suspicious activity has been observed in the environment orginating from a program running on a user's device. You have been given the file hash -  30E527E45F50D2BA82865C5679A6FA998EE0A1755361AB01673950810D071C85 - and are tasked with gathering intel on this program using open source intelligence tools (OSINT).  What is the most common filename associated with this suspicious program?", 
+"points": 75, 
+"links": ["https://your-ctf-site.com/OSINT-challenge-1"], 
+"hints": [ 
+"Try using a tool such as VirusTotal" 
+], 
+"flag": "FLAG{MY}" 
+} 
+
