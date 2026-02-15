@@ -7,7 +7,7 @@
 "hints": [
 "Look for lines starting with 'Received: from' in the headers.",
 "The IP address is in square brackets [xxx.xxx.xxx.xxx].",
-"The ag format is FLAG{lastoctet} where lastoctet is the number after the last dot."
+"The flag format is FLAG{lastoctet} where lastoctet is the number after the last dot."
 ],
 "flag": "FLAG{89}"
 }
