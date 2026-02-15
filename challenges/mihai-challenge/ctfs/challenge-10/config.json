@@ -1,14 +1,13 @@
 {
-"id": "cti-final-10",
-"title": "The Full Investigation",
-"description": "You've received an anonymous tip about a suspicious domain: ' https://kmcc-uk.org/'. Step 1: Use WHOIS to nd the registrar name. Step 2: Use DNS lookup to find the rest A record (first IPv4 address). Step 3: Use IP geolocation to nd the country code. Combine them in format: REGISTRAR_IP_COUNTRY (all uppercase, use first word of registrar only).",
-"points": 300,
-"links": ["https://your-ctf-site.com/final-cti-challenge"],
-"hints": [
-"Break this into three separate lookups: WHOIS, DNS, and IP geolocation.",
-"Use the tools from previous challenges to solve each step.",
-"Example format: FLAG{NAMECHEAP_192.0.2.1_US}"
-],
-"flag": "FLAG{cloudflare_172.67.199.230_US}"
+  "id": "cti-final-10",
+  "title": "The Full Investigation",
+  "description": "You've received an anonymous tip about a suspicious domain: 'https://kmcc-uk.org/'. Step 1: Use WHOIS to find the registrar name. Step 2: Use DNS lookup to find the first A record (first IPv4 address). Step 3: Use IP geolocation to find the country code. Combine them in format: REGISTRAR_IP_COUNTRY (all uppercase, use first word of registrar only).",
+  "points": 300,
+  "links": ["https://your-ctf-site.com/final-cti-challenge"],
+  "hints": [
+    "Break this into three separate lookups: WHOIS, DNS, and IP geolocation.",
+    "Use the tools from previous challenges to solve each step.",
+    "Example format: FLAG{NAMECHEAP_192.0.2.1_US}"
+  ],
+  "flag": "FLAG{cloudflare_172.67.199.230_US}"
 }
-
