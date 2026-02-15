@@ -7,7 +7,7 @@
 "hints": [
 "Try searching for 'IP lookup tool' or 'IP geolocation' in your browser.",
 "Websites like ipinfo.io or iplocation.net can help you nd this information.",
-"The ag format is FLAG{COUNTRYCODE} where COUNTRYCODE is the two-letter code."
+"The flag format is FLAG{COUNTRYCODE} where COUNTRYCODE is the two-letter code."
 ],
 "flag": "FLAG{MY}"
 }
