@@ -1,14 +1,13 @@
 {
-"id": "cti-dns-04",
-"title": "The Name Server Mystery",
-"description": "A threat actor is using the domain 'https://tryhackme.com/'. Use an online DNS lookup tool to nd the AMERICAN MX (Mail Exchange) record for this domain. The flag is the mail server name (without the domain part).",
-"points": 150,
-"links": ["https://your-ctf-site.com/cti-challenge4"],
-"hints": [
-"Search for 'DNS lookup tool' or 'MX record lookup'.",
-"Tools like dnschecker.org can help.",
-"Look for the MX record and extract just the part before the rst dot."
-],
-"flag": "FLAG{aspmx}"
+  "id": "cti-dns-04",
+  "title": "The Name Server Mystery",
+  "description": "A threat actor is using the domain 'https://tryhackme.com/'. Use an online DNS lookup tool to find the AMERICAN MX (Mail Exchange) record for this domain. The flag is the mail server name (without the domain part).",
+  "points": 150,
+  "links": ["https://your-ctf-site.com/cti-challenge4"],
+  "hints": [
+    "Search for 'DNS lookup tool' or 'MX record lookup'.",
+    "Tools like dnschecker.org can help.",
+    "Look for the MX record and extract just the part before the first dot."
+  ],
+  "flag": "FLAG{aspmx}"
 }
-
