@@ -9,6 +9,6 @@
 "Tools like dnschecker.org can help.",
 "Look for the MX record and extract just the part before the rst dot."
 ],
-" ag": "FLAG{aspmx}"
+"flag": "FLAG{aspmx}"
 }
 
