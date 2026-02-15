@@ -1,14 +1,13 @@
 {
-"id": "cti-whois-02",
-"title": "Domain Detective",
-"description": "We've discovered a suspicious domain: 'https://ctf101.org/'. Use a WHOIS lookup tool to nd out when this domain was registered. The flag is the registration year (4digits).",
-"points": 100,
-"links": ["https://your-ctf-site.com/cti-challenge2"],
-"hints": [
-"Search for 'WHOIS lookup' and use websites like who.is or whois.com.",
-"Look for 'Creation Date' or 'Registered On' in the WHOIS results.",
-"The flag format is FLAG{YYYY} where YYYY is the year."
-],
-"flag": "FLAG{2018}"
+  "id": "cti-whois-02",
+  "title": "Domain Detective",
+  "description": "We've discovered a suspicious domain: 'https://ctf101.org/'. Use a WHOIS lookup tool to find out when this domain was registered. The flag is the registration year (4 digits).",
+  "points": 100,
+  "links": ["https://your-ctf-site.com/cti-challenge2"],
+  "hints": [
+    "Search for 'WHOIS lookup' and use websites like who.is or whois.com.",
+    "Look for 'Creation Date' or 'Registered On' in the WHOIS results.",
+    "The flag format is FLAG{YYYY} where YYYY is the year."
+  ],
+  "flag": "FLAG{2018}"
 }
-
