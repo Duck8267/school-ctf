@@ -1,14 +1,13 @@
 {
-"id": "cti-exif-05",
-"title": "Hidden in the Photo",
-"description": "A threat actor posted this image online. The image contains GPS coordinates in its EXIF metadata. Use an online EXIF viewer to extract the latitude. The flag is the latitude rounded to 2 decimal places (format: XX.XX).",
-"points": 175,
-"links": "<a href=\"/assets/suspicious-photo.jpg.jpeg\">View Photo</a>",
-"hints": [
-"Search for 'EXIF viewer' or 'online EXIF data reader'.",
-"Websites like exifdata.com or jimpl.com can extract metadata.",
-"Look for 'GPS Latitude' in the results and round to 2 decimals."
-],
-"flag": "FLAG{51.51}"
+  "id": "cti-exif-05",
+  "title": "Hidden in the Photo",
+  "description": "A threat actor posted this image online. The image contains GPS coordinates in its EXIF metadata. Use an online EXIF viewer to extract the latitude. The flag is the latitude rounded to 2 decimal places (format: XX.XX).",
+  "points": 175,
+  "links": ["https://your-ctf-site.com/assets/suspicious-photo.jpg"],
+  "hints": [
+    "Search for 'EXIF viewer' or 'online EXIF data reader'.",
+    "Websites like exifdata.com or jimpl.com can extract metadata.",
+    "Look for 'GPS Latitude' in the results and round to 2 decimals."
+  ],
+  "flag": "FLAG{51.51}"
 }
-
