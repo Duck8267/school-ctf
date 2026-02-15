@@ -9,6 +9,6 @@
 "Websites like ipinfo.io or iplocation.net can help you nd this information.",
 "The ag format is FLAG{COUNTRYCODE} where COUNTRYCODE is the two-letter code."
 ],
-" ag": "FLAG{MY}"
+"flag": "FLAG{MY}"
 }
 
