@@ -9,5 +9,5 @@
 "The IP address is in square brackets [xxx.xxx.xxx.xxx].",
 "The ag format is FLAG{lastoctet} where lastoctet is the number after the last dot."
 ],
-" ag": "FLAG{89}"
+"flag": "FLAG{89}"
 }
