@@ -9,6 +9,6 @@
 "Select a snapshot from January 1, 2025.",
 "Look at the browser tab title or the <title> tag in the HTML."
 ],
-" ag": "FLAG{performance}"
+"flag": "FLAG{performance}"
 }
 
