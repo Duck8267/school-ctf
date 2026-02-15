@@ -1,13 +1,13 @@
 {
-"id": "cti-breach-07",
-"title": "Have I Been Compromised?",
-"description": "An employee's email 'pinkpony@gmail.com' may have been in a data breach. Use HaveIBeenPwned (haveibeenpwned.com) to check. The flag is the name of the SECOND breach listed (if any) in lowercase with underscores instead of spaces.",
-"points": 100,
-"links": ["https://your-ctf-site.com/cti-challenge7"],
-"hints": [
-"Visit haveibeenpwned.com and enter the email address.",
-"Look at the 'Breaches you were pwned in' section.",
-"Format: FLAG{breach_name_here} in lowercase."
-],
-"flag": "FLAG{hot_topic}"
+  "id": "cti-breach-07",
+  "title": "Have I Been Compromised?",
+  "description": "An employee's email 'pinkpony@gmail.com' may have been in a data breach. Use HaveIBeenPwned (haveibeenpwned.com) to check. The flag is the name of the SECOND breach listed (if any) in lowercase with underscores instead of spaces.",
+  "points": 100,
+  "links": ["https://your-ctf-site.com/cti-challenge7"],
+  "hints": [
+    "Visit haveibeenpwned.com and enter the email address.",
+    "Look at the 'Breaches you were pwned in' section.",
+    "Format: FLAG{breach_name_here} in lowercase."
+  ],
+  "flag": "FLAG{hot_topic}"
 }
