@@ -9,6 +9,6 @@
 "Look for 'Creation Date' or 'Registered On' in the WHOIS results.",
 "The ag format is FLAG{YYYY} where YYYY is the year."
 ],
-" ag": "FLAG{2018}"
+"flag": "FLAG{2018}"
 }
 
