@@ -1,13 +1,13 @@
 {
 "id": "cti-attribution-09",
 "title": "Name That Threat Group",
-"description": "We detected an attack using the following hash: ,'e7457a369d943b77648fc121e54728a3862740f8b4d7337ec15b8d0067244735'. Search for this hash on a threat intelligence platform (VirusTotal). The ag is the number of security vendors that ag this as malicious.",
+"description": "We detected an attack using the following hash: ,'e7457a369d943b77648fc121e54728a3862740f8b4d7337ec15b8d0067244735'. Search for this hash on a threat intelligence platform (VirusTotal). The flag is the number of security vendors that ag this as malicious.",
 "points": 200,
 "links": ["https://your-ctf-site.com/cti-challenge9"],
 "hints": [
 "Go to virustotal.com and search for the le hash.",
-"Look at the 'Detection' tab to see how many vendors agged it.",
-"The ag format is FLAG{number} where number is the detection count."
+"Look at the 'Detection' tab to see how many vendors flagged it.",
+"The flag format is FLAG{number} where number is the detection count."
 ],
-" ag": "FLAG{57}"
+"flag": "FLAG{57}"
 }
