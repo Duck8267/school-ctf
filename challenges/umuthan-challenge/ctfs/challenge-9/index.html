@@ -3,9 +3,14 @@ let isAuthorized = false;
 
 function checkAccess() {
   if (isAuthorized) {
-    document.body.innerText = "FLAG{logic_hacker}";
+    const el = document.getElementById("result");
+    if (el) el.innerText = "FLAG{logic_hacker}";
   }
 }
 </script>
 
+<h1>The Logic Gate</h1>
+<p>Find the hidden flag.</p>
+
 <button onclick="checkAccess()">Verify</button>
+<div id="result"></div>

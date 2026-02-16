@@ -1,10 +1,12 @@
-{ 
-"id": "cookie-03", 
-"title": "The Cookie Monster", 
-"description": "To access the secret area, you need to be an 'admin'. However, the system  thinks you are just a 'guest'. Check your browser cookies!", 
-"points": 100, 
-"links": ["https://your-ctf-site.com/challenge3"], 
-"hints": ["Go to Application > Cookies.", "Try changing the value of 'user_role' from 'guest' to 'admin'."], 
-"flag": "FLAG{cookie_is_delicious}" 
-} 
-
+{
+  "id": "cookie-03",
+  "title": "The Cookie Monster",
+  "description": "To access the secret area, you need to be an 'admin'. However, the system thinks you are just a 'guest'. Check your browser cookies!",
+  "points": 100,
+  "links": ["index.html"],
+  "hints": [
+    "Go to Application > Cookies.",
+    "Try changing the value of 'user_role' from 'guest' to 'admin'."
+  ],
+  "flag": "FLAG{cookie_is_delicious}"
+}

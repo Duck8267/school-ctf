@@ -1,10 +1,9 @@
-{ 
-"id": "console-log-02", 
-"title": "The Whispering Console", 
-"description": "Developers often leave messages in the console to debug their code. This  page sends a secret message to the console every time it loads.", 
-"points": 75, 
-"links": ["https://your-ctf-site.com/challenge2"], 
-"hints": ["Open the 'Console' tab and refresh the page.", "Look for a message that starts with 'FLAG{'."], 
-"flag": "FLAG{console_detective}" 
-} 
-
+{
+  "id": "console-log-02",
+  "title": "The Whispering Console",
+  "description": "Developers often leave messages in the console to debug their code. This  page sends a secret message to the console every time it loads.",
+  "points": 75,
+  "links": ["index.html"],
+  "hints": ["Open the 'Console' tab and refresh the page.", "Look for a message that starts with 'FLAG{'."],
+  "flag": "FLAG{console_detective}"
+}

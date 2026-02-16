@@ -1,11 +1,14 @@
-{ 
-"id": "network-08", 
-"title": "Hidden Requests", 
-"description": "When the page loads, it fetches a secret file from an API. You can't see it on the page, but you can see it in the network traffic.", 
-"points": 150, 
-"links": ["https://your-ctf-site.com/challenge8"], 
-"hints": ["Open the 'Network' tab and refresh the page.", "Look for a 'Fetch' or 'XHR' request and check its 'Response'."], 
-"flag": "FLAG{network_sniffer_pro}" 
-} 
-
-
+{
+  "id": "network-08",
+  "title": "Hidden Requests",
+  "description": "When the page loads, it fetches a secret file from an API. You can't see it on the page, but you can see it in the network traffic.",
+  "points": 150,
+  "links": [
+    "index.html"
+  ],
+  "hints": [
+    "Open the 'Network' tab and refresh the page.",
+    "Look for a 'Fetch' or 'XHR' request and check its 'Response'."
+  ],
+  "flag": "FLAG{network_sniffer_pro}"
+}

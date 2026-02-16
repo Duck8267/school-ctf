@@ -1,9 +1,14 @@
-{ 
-"id": "disabled-07", 
-"title": "The Unclickable Button", 
-"description": "There is a 'Claim Flag' button, but it's grayed out and unclickable. Can you  find a way to activate it?", 
-"points": 80, 
-"links": ["https://your-ctf-site.com/challenge7"], 
-"hints": ["Inspect the button and look for the 'disabled' attribute.", "Delete the word 'disabled' from the HTML tag and try clicking again."], 
-"flag": "FLAG{button_unlocked}" 
-} 
+{
+  "id": "disabled-07",
+  "title": "The Unclickable Button",
+  "description": "There is a 'Claim Flag' button, but it's grayed out and unclickable. Can you  find a way to activate it?",
+  "points": 80,
+  "links": [
+    "index.html"
+  ],
+  "hints": [
+    "Inspect the button and look for the 'disabled' attribute.",
+    "Delete the word 'disabled' from the HTML tag and try clicking again."
+  ],
+  "flag": "FLAG{button_unlocked}"
+}
