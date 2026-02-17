@@ -1,5 +1,5 @@
 {
-  "id": "js-obf-04",
+  "id": "challenge-4",
   "title": "Jumbled Code",
   "description": "A function runs when you click a button, but the code is unreadable. What does `String.fromCharCode(70, 76, 65, 71...)` mean?",
   "points": 150,
