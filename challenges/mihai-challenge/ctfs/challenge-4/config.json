@@ -3,7 +3,7 @@
   "title": "The Name Server Mystery",
   "description": "A threat actor is using the domain 'https://tryhackme.com/'. Use an online DNS lookup tool to find the AMERICAN MX (Mail Exchange) record for this domain. The flag is the mail server name (without the domain part).",
   "points": 150,
-  "links": ["https://your-ctf-site.com/cti-challenge4"],
+  "links": ["https://tryhackme.com/"],
   "hints": [
     "Search for 'DNS lookup tool' or 'MX record lookup'.",
     "Tools like dnschecker.org can help.",
