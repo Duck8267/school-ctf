@@ -3,7 +3,7 @@
   "title": "The Digital Footprint",
   "description": "We identified a suspicious username: 'cyberspyfromcanterbury'. Use the 'namechk.com' tool to find out how many platforms this username appears on from every website they check for. The flag is that number.",
   "points": 125,
-  "links": ["https://your-ctf-site.com/cti-challenge6"],
+  "links": ["https://namechk.com/"],
   "hints": [
     "Search for 'username checker' or 'username search tool'.",
     "Count only the platforms where the username exists (shown in green/found)."
