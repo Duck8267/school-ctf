@@ -1,9 +1,9 @@
 {
   "id": "cti-email-03",
   "title": "The Email Trail",
-  "description": "A phishing email was sent to our organization. We've provided the email headers in a text file. Find the originating IP address (the first 'Received: from' entry). The flag is hidden as the last octet of that IP address.",
+  "description": "A phishing email was sent to our organization. We've provided the email headers in a text file. Find the originating IP address (the first 'Received: from' entry). The flag is hidden as the last octet of that IP address. Download the 'CTF_Platform_Files' zip file from the provided link and open the 'Email Headers Challenge' file.",
   "points": 125,
-  "links": ["https://your-ctf-site.com/email-headers.txt"],
+  "links": ["https://cyber.kent.ac.uk/events/ACE-Cyber-Security-Competition@Kent-20260224/CTF_Platform_Files.zip"],
   "hints": [
     "Look for lines starting with 'Received: from' in the headers.",
     "The IP address is in square brackets [xxx.xxx.xxx.xxx].",
