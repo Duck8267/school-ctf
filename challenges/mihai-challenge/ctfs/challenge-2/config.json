@@ -3,7 +3,7 @@
   "title": "Domain Detective",
   "description": "We've discovered a suspicious domain: 'https://ctf101.org/'. Use a WHOIS lookup tool to find out when this domain was registered. The flag is the registration year (4 digits).",
   "points": 100,
-  "links": ["https://your-ctf-site.com/cti-challenge2"],
+  "links": ["https://ctf101.org/"],
   "hints": [
     "Search for 'WHOIS lookup' and use websites like who.is or whois.com.",
     "Look for 'Creation Date' or 'Registered On' in the WHOIS results.",
