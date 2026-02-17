@@ -1,5 +1,5 @@
 {
-"id": "OSINT-04",
+"id": "challenge-4",
 "title": "3CX Supply Chain Attack 2",
 "description": "A global financial services firm relies on the 3CX Desktop App for internal voice communications. After deploying a routine 3CX update, endpoint security tools intermittently quarantine the application on some systems, while others show no alerts. IT initially dismisses the warnings as false positives, but later detects unusual outbound traffic from the 3CX process to unknown external servers. Further investigation suggests the 3CX update was compromised prior to distribution, indicating a supply chain attack. You've been given the file hash - 59e1edf4d82fae4978e97512b0331b7eb21dd4b838b850ba46794d9c7a2c0983 - Which 2 malicious DLLs were dropped by the .msi file? Seperate each dll with a comma",
 "points": 75,
