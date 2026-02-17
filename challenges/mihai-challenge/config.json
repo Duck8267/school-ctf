@@ -1,5 +1,5 @@
 {
-  "id": "cti-osint",
+  "id": "mihai-challenge",
   "name": "CTI OSINT Challenges",
   "description": "Unmask threat actors through cutting-edge open-source intelligence reconnaissance! Deploy IP geolocation, WHOIS forensics, DNS enumeration, EXIF extraction, and VirusTotal analysis to hunt IOCs, track down artefacts, trace attack infrastructure, and attribute sophisticated campaigns. Real-world threat hunting toolkit for tomorrow's cyber security investigators."
 }
