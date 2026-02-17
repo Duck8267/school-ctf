@@ -1,5 +1,5 @@
 {
-  "id": "cti-username-06",
+  "id": "challenge-6",
   "title": "The Digital Footprint",
   "description": "We identified a suspicious username: 'cyberspyfromcanterbury'. Use the 'namechk.com' tool to find out how many platforms this username appears on from every website they check for. The flag is that number.",
   "points": 125,
