@@ -1,7 +1,7 @@
 {
   "id": "url-encoding-trap",
   "title": "URL Encoding Trap",
-  "description": "URL encoding replaces unsafe ASCII characters with a '%' followed by two hexadecimal digits.\n\nYour task: Decode the following string:\n\nFLAG%7Burl_encoding_is_sneaky%7D\n\nHint: The flag format is FLAG{decrypted_text}",
+  "description": "URL encoding replaces unsafe ASCII characters with a '%' followed by two hexadecimal digits.\n\nYour task: Decode the following string:\n\nFLAG%7Burl_encoding_is_sneaky%7D\n\n The flag format is FLAG{decrypted_text}",
   "points": 200,
   "photo": null,
   "links": [
