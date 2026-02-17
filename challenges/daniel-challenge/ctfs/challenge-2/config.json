@@ -1,7 +1,7 @@
 {
   "id": "base64-basics",
   "title": "Base64 Basics",
-  "description": "Base64 is a common encoding scheme used to represent binary data in ASCII text.\n\nYour task: Decode the following string:\n\nRkxBR3tiYXNlNjRfZGVjb2RlZH0=\n\nHint: The flag format is FLAG{decrypted_text}",
+  "description": "Base64 is a common encoding scheme used to represent binary data in ASCII text.\n\nYour task: Decode the following string:\n\nRkxBR3tiYXNlNjRfZGVjb2RlZH0=\n\n The flag format is FLAG{decrypted_text}",
   "points": 100,
   "photo": null,
   "links": [
