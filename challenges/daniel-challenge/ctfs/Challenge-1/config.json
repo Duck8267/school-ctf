@@ -1,7 +1,7 @@
 {
   "id": "rot13-warmup",
   "title": "ROT13 Warm-Up",
-  "description": "ROT13 is a simple letter substitution cipher that replaces a letter with the 13th letter after it in the alphabet.\n\nYour task: Decode the following message:\n\nsynt{ebg13_vf_rnfl}\n\nHint: ROT13 is its own inverse. The flag format is FLAG{decrypted_text}",
+  "description": "ROT13 is a simple letter substitution cipher that replaces a letter with the 13th letter after it in the alphabet.\n\nYour task: Decode the following message:\n\nsynt{ebg13_vf_rnfl}",
   "points": 75,
   "photo": null,
   "links": [
@@ -10,7 +10,8 @@
   "hints": [
     "Use the ROT13 operation in CyberChef",
     "Applying ROT13 twice gives the original text",
-    "The output already contains the flag format"
+    "The output already contains the flag format",
+    "ROT13 is its own inverse. The flag format is FLAG{decrypted_text}"
   ],
   "flag": "FLAG{rot13_is_easy}"
 }
