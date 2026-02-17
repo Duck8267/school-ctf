@@ -1,5 +1,5 @@
 {
-"id": "cti-exif-05b",
+"id": "challenge-5",
 "title": "Metadata Trail",
 "description": "An image shared by a threat actor contains GPS data in its EXIF metadata. Extract the GPS longitude and round it to two decimal places.",
 "points": 175,
