@@ -1,5 +1,5 @@
 {
-  "id": "cti-whois-02",
+  "id": "challenge-2",
   "title": "Domain Detective",
   "description": "We've discovered a suspicious domain: 'https://ctf101.org/'. Use a WHOIS lookup tool to find out when this domain was registered. The flag is the registration year (4 digits).",
   "points": 100,
