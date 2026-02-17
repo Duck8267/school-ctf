@@ -3,7 +3,10 @@
   "title": "The Time Traveler",
   "description": "A malicious website has been taken down, but we need to see what it looked like on its first snapshot from January 1, 2025. Use the Wayback Machine (web.archive.org) to view the archived version of 'https://www.hackthebox.com/'. The secret message is the 3rd word (or the only word in the middle row) from the biggest text that appears on your screen.",
   "points": 150,
-  "links": ["https://your-ctf-site.com/cti-challenge8"],
+  "links": [
+    "https://web.archive.org/",
+    "https://www.hackthebox.com/"
+  ],
   "hints": [
     "Go to web.archive.org and enter the domain name.",
     "Select a snapshot from January 1, 2025.",
