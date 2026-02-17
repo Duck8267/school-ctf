@@ -1,5 +1,5 @@
 {
-"id": "cti-ip-01b",
+"id": "challenge-1",
 "title": "IP Origin Check",
 "description": "A suspicious login attempt was detected from IP address '8.34.92.17'. Your task is to identify which country this IP address is registered to using an IP geolocation tool.",
 "points": 75,
