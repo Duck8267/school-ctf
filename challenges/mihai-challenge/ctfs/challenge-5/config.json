@@ -1,5 +1,5 @@
 {
-  "id": "cti-exif-05",
+  "id": "challenge-5",
   "title": "Hidden in the Photo",
   "description": "A threat actor posted this image online. The image contains GPS coordinates in its EXIF metadata. Use an online EXIF viewer to extract the latitude. The flag is the latitude rounded to 2 decimal places (format: XX.XX). Download the 'CTF_Platform_Files' zip file from the provided link and open the 'suspicious-photo.jpg' file.",
   "points": 175,
