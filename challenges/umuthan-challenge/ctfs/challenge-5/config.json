@@ -1,5 +1,5 @@
 { 
-"id": "stego-05", 
+"id": "challenge-5", 
 "title": "Secrets in Pixels", 
 "description": "We provided a logo for the event. If you look at the raw source code of the  image file, you might find a Base64 encoded string hidden at the end.", 
 "points": 125, 
