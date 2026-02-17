@@ -1,5 +1,5 @@
 {
-  "id": "console-log-02",
+  "id": "challenge-2",
   "title": "The Whispering Console",
   "description": "Developers often leave messages in the console to debug their code. This  page sends a secret message to the console every time it loads.",
   "points": 75,
