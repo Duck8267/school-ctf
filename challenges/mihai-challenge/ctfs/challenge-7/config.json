@@ -1,5 +1,5 @@
 {
-  "id": "cti-breach-07",
+  "id": "challenge-7",
   "title": "Have I Been Compromised?",
   "description": "An employee's email 'pinkpony@gmail.com' may have been in a data breach. Use HaveIBeenPwned (haveibeenpwned.com) to check. The flag is the name of the SECOND breach listed (if any) in lowercase with underscores instead of spaces.",
   "points": 100,
