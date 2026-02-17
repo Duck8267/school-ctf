@@ -1,12 +1,10 @@
-{
-"id": "OSINT-08",
-"title": "Github Forensics",
-"description": "A client has requested assistance after a network compromise caused a full outage. Preliminary forensic analysis shows the attack originated from a single user account, indicating a potential insider threat. Investigate the incident to identify the insider and determine the actions taken during the attack. You have been given the compromised user's github profile - https://github.com/EMarseille99 One of the account's followers is based in Kanpar. Can you find their linkedin profile?",
-"points": 75,
-"links": ["https://your-ctf-site.com/OSINT-challenge-8"],
-"hints": [
-"Have a look at their followers"
-],
-"flag": "FLAG{https://www.linkedin.com/in/sanjay-sharma-cisa-45b989a2/}"
+"id": "OSINT-07", 
+"title": "Github Forensics", 
+"description": "A client has requested assistance after a network  compromise caused a full outage. Preliminary forensic analysis shows the attack originated from a single user account, indicating a potential insider threat. Investigate the incident to identify the insider and determine the actions taken during the attack. You have been given the compromised user's github profile - https://github.com/EMarseille99 What is the well known RAT tool that the inisder forked?", 
+"points": 75, 
+"links": ["https://github.com/EMarseille99"], 
+"hints": [ 
+"Should be displayed under 'Popular repositories'" 
+], 
+"flag": "FLAG{MY}" 
 }
-
