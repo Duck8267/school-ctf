@@ -1,5 +1,5 @@
 {
-"id": "cti-email-03b",
+"id": "challenge-3",
 "title": "Tracing the Sender",
 "description": "A phishing email was reported by an employee. You have been given the email headers. Identify the originating IP address by locating the first 'Received: from' entry. Extract the last octet of that IP address.",
 "points": 125,
