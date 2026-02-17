@@ -1,5 +1,5 @@
 {
-"id": "cti-whois-02b",
+"id": "challenge-2",
 "title": "Registration Records",
 "description": "Investigate the domain 'example-security.net' using a WHOIS lookup tool. Determine the year the domain was registered.",
 "points": 100,
