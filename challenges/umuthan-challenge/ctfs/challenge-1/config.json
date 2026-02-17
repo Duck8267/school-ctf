@@ -1,5 +1,5 @@
 {
-  "id": "inspect-01",
+  "id": "challenge-1",
   "title": "Hidden in Plain Sight",
   "description": "Sometimes the answers are right in front of us, but we need the right tools to see them. We've hidden a flag inside the CSS styles of this page's background.",
   "points": 50,
