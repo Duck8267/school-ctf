@@ -1,7 +1,7 @@
 {
   "id": "triple-layer-nightmare",
   "title": "Triple-Layer Nightmare",
-  "description": "This challenge uses multiple layers of encoding.\n\nYour task: Decode the following string:\n\nNTQ2YzQxNTc3YjY4NmY3NzVmNjk3MzVmNjg2MTcyNjQ3ZA==\n\nHint: The flag format is FLAG{decrypted_text}",
+  "description": "This challenge uses multiple layers of encoding.\n\nYour task: Decode the following string:\n\nNTQ2YzQxNTc3YjY4NmY3NzVmNjk3MzVmNjg2MTcyNjQ3ZA==\n\n The flag format is FLAG{decrypted_text}",
   "points": 400,
   "photo": null,
   "links": [
