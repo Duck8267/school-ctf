@@ -1,5 +1,5 @@
 {
-"id": "cti-breach-07b",
+"id": "challenge-7",
 "title": "Breach Exposure",
 "description": "An employee's email address 'bluewhale@outlook.com' may have appeared in a data breach. Use Have I Been Pwned to investigate. Identify the first listed breach.",
 "points": 100,
