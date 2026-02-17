@@ -1,7 +1,7 @@
 {
   "id": "base64-caesar",
   "title": "Layered Encoding",
-  "description": "Sometimes data is encoded multiple times.\n\nYour task: Decode the following message:\n\nSkxCR3tkbHF4aF9sYXllcn0=\n\nHint: The flag format is FLAG{decrypted_text}",
+  "description": "Sometimes data is encoded multiple times.\n\nYour task: Decode the following message:\n\nSkxCR3tkbHF4aF9sYXllcn0=\n\n The flag format is FLAG{decrypted_text}",
   "points": 250,
   "photo": null,
   "links": [
