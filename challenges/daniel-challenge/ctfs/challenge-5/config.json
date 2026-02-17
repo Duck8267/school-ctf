@@ -1,7 +1,7 @@
 {
   "id": "caesar-reloaded",
   "title": "Caesar Cipher Reloaded",
-  "description": "The Caesar cipher shifts letters by a fixed amount, but this time the shift is less obvious.\n\nYour task: Decode the following message:\n\nkrod{fdhvdu_flskhu}\n\nHint: The flag format is FLAG{decrypted_text}",
+  "description": "The Caesar cipher shifts letters by a fixed amount, but this time the shift is less obvious.\n\nYour task: Decode the following message:\n\nkrod{fdhvdu_flskhu}\n\n The flag format is FLAG{decrypted_text}",
   "points": 175,
   "photo": null,
   "links": [
