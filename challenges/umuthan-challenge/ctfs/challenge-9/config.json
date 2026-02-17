@@ -1,5 +1,5 @@
 {
-  "id": "logic-09",
+  "id": "challenge-9",
   "title": "The Logic Gate",
   "description": "The script checks if `isAuthorized` is true. We've set it to false. Can you override the system logic using the console?",
   "points": 175,
