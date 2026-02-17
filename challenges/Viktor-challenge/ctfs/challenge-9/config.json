@@ -1,5 +1,5 @@
 {
-"id": "cti-malware-09b",
+"id": "challenge-9",
 "title": "Malware Detection Count",
 "description": "A suspicious file hash has been identified: '44d88612fea8a8f36de82e1278abb02f'. Use a threat intelligence platform to determine how many security vendors flag this file as malicious.",
 "points": 200,
