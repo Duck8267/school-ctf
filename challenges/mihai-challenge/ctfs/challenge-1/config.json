@@ -1,5 +1,5 @@
 {
-  "id": "cti-ip-01",
+  "id": "challenge-1",
   "title": "Where in the World?",
   "description": "A suspicious login attempt was detected from IP address '175.144.81.121'. Your job is to identify which country this IP address is registered to. Use a free IP lookup tool to find the country code (e.g., 'US' for United States, 'GB' for United Kingdom).",
   "points": 75,
