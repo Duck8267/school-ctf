@@ -1,5 +1,5 @@
 {
-"id": "cti-wayback-08b",
+"id": "challenge-8",
 "title": "Archived Evidence",
 "description": "Investigate the website 'https://www.offensive-security.com' using the Wayback Machine. Identify the earliest archived snapshot and extract the last word from the page title.",
 "points": 150,
