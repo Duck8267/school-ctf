@@ -1,5 +1,5 @@
 {
-  "id": "reverse-decode",
+  "id": "challenge-9",
   "title": "Backwards Thinking",
   "description": "Sometimes the simplest trick is reversing the data.\n\nYour task: Decode the following message:\n\n=}dlrow_olleh{GALF\n\n The flag format is FLAG{decrypted_text}",
   "points": 325,
