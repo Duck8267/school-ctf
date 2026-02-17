@@ -1,7 +1,7 @@
 {
   "id": "rot13-warmup",
   "title": "ROT13 Warm-Up",
-  "description": "ROT13 is a simple letter substitution cipher that replaces a letter with the 13th letter after it in the alphabet.\n\nYour task: Decode the following message:\n\nsynt{ebg13_vf_rnfl} \n\n The flag format is FLAG{decrypted_text}",
+  "description": "ROT13 is a simple letter substitution cipher that replaces a letter with the 13th letter after it in the alphabet.\n\nYour task: Decode the following message:\n\n ebg13_vf_rnfl \n\n The flag format is FLAG{decrypted_text}",
   "points": 75,
   "photo": null,
   "links": [
