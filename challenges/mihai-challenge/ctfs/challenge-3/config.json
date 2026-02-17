@@ -1,5 +1,5 @@
 {
-  "id": "cti-email-03",
+  "id": "challenge-3",
   "title": "The Email Trail",
   "description": "A phishing email was sent to our organization. We've provided the email headers in a text file. Find the originating IP address (the first 'Received: from' entry). The flag is hidden as the last octet of that IP address. Click on the given hyperlink open the 'Email Headers Challenge' file.",
   "points": 125,
