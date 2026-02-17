@@ -1,5 +1,5 @@
 {
-  "id": "cti-dns-04",
+  "id": "challenge-4",
   "title": "The Name Server Mystery",
   "description": "A threat actor is using the domain 'https://tryhackme.com/'. Use an online DNS lookup tool to find the AMERICAN MX (Mail Exchange) record for this domain. The flag is the mail server name (without the domain part).",
   "points": 150,
