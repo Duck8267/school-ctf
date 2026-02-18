@@ -4,7 +4,7 @@
   "description": "The script checks if `isAuthorized` is true. We've set it to false. Can you override the system logic using the console?",
   "points": 175,
   "links": [
-    "index.html"
+    "challenge-9/index.html"
   ],
   "hints": [
     "Type `isAuthorized = true` into the console and press Enter.",
