@@ -4,7 +4,8 @@ A web-based Capture The Flag platform designed for school-age students (15+) to 
 
 ## Features
 
-- Team registration with simple team name entry
+- Team registration with team name and a 4-digit PIN (so teams can log back in if they lose their session)
+- **Log in to existing team** — teams that signed out or lost connection can re-enter their team name and PIN to resume
 - Password-protected events containing multiple challenge categories
 - Timer tracking for each CTF attempt
 - Real-time leaderboard with countdown timer
@@ -60,7 +61,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
   /api/                        # API routes
   /dashboard/                  # Team dashboard with leaderboard
   /event/                      # Event password entry
-  /join/                       # Team registration
+  /join/                       # Team registration (name + PIN) and login to existing team
   /challenge/[id]/             # Challenge category page
   /challenge/[id]/ctf/[ctfId]/ # Individual CTF page
 
@@ -178,7 +179,8 @@ The platform uses JSON files in a `/data` directory (auto-created, git-ignored).
 
 ## Notes
 
-- Teams are identified by HMAC-signed cookies
+- Teams are identified by HMAC-signed cookies. On first join, teams set a 4-digit PIN; they can log back in later with team name + PIN.
+- **Existing teams (created before PIN was added)** have no stored PIN and cannot use “Log in to existing team”; only newly registered teams can.
 - Timer starts automatically when a team views a CTF
 - Points are awarded only on first correct submission
 - Hints cost points (10 per hint number: hint 1 = 10pts, hint 2 = 20pts)

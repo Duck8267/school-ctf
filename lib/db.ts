@@ -39,6 +39,7 @@ interface Team {
   total_points: number
   event_id: string
   created_at: string
+  pin?: string
 }
 
 interface ChallengeAccess {
@@ -146,7 +147,7 @@ function getLeaderboardTimerStatus(
 
 const db = {
   teams: {
-    create: (name: string, event_id: string): number => {
+    create: (name: string, event_id: string, pin: string): number => {
       const teams = readTeams()
       const id = teams.length > 0 ? Math.max(...teams.map(t => t.id)) + 1 : 1
       const team: Team = {
@@ -155,6 +156,7 @@ const db = {
         total_points: 60,
         event_id,
         created_at: new Date().toISOString(),
+        pin,
       }
       teams.push(team)
       writeTeams(teams)
@@ -174,6 +176,19 @@ const db = {
     getByEvent: (event_id: string): Team[] => {
       const teams = readTeams()
       return teams.filter(t => t.event_id === event_id)
+    },
+    findByEventNameAndPin: (
+      event_id: string,
+      name: string,
+      pin: string
+    ): Team | undefined => {
+      const teams = readTeams()
+      return teams.find(
+        t =>
+          t.event_id === event_id &&
+          t.name === name &&
+          t.pin === pin
+      )
     },
     updatePoints: (id: number, points: number) => {
       const teams = readTeams()
