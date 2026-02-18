@@ -1,6 +1,6 @@
 {
   "id": "shawn-challenge",
-  "name": "Shawn Challenge",
-  "description": "Step into the world of cyber sleuthing! Hunt down suspicious hashes, dig through GitHub for hidden artifacts, and track digital footprints using OSINT and threat intelligence tools. Uncover malicious infrastructure, spot indicators of compromise, and outsmart stealthy cyber actors. Sharpen your investigative skills and become the next generation of digital detectives—this is real-world cybercrime hunting, and the mission starts now!"
+  "name": "Forensics Challenge",
+  "description": "Analyze hidden clues in files, metadata, and network traces to uncover the truth in this hands-on Forensics challenge."
 }
 
