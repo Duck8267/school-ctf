@@ -73,32 +73,112 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
   ctfEmojis.ts                 # Emoji mapping for leaderboard
 ```
 
-## Adding Challenges
+## Adding Events, Challenges, and CTFs
 
-1. Create a folder in `/challenges/` with a `config.json`:
+### Events
+
+Events are stored in **`events.json`** at the project root. Users enter the event password on the `/event` page to join an event; teams are then scoped to that event.
+
+**Format:** JSON array of event objects.
+
+| Field       | Type   | Description                          |
+|------------|--------|--------------------------------------|
+| `id`       | string | Unique ID (e.g. `cyberfirst-girls-2024`) |
+| `name`     | string | Display name                         |
+| `date`     | string | Date text (e.g. `Thursday 27th November`) |
+| `location` | string | Venue or location                    |
+| `password` | string | Password users enter to join the event |
+| `description` | string | Short description                 |
+
+**Example `events.json`:**
+
+```json
+[
+  {
+    "id": "my-event-2025",
+    "name": "School CTF Day 2025",
+    "date": "March 15, 2025",
+    "location": "Main Hall",
+    "password": "secret123",
+    "description": "A day of cybersecurity challenges!"
+  }
+]
+```
+
+---
+
+### Challenges
+
+A **challenge** is a category that contains multiple CTFs. Each challenge lives in its own folder under **`/challenges/`** with a **`config.json`** at the root of that folder. Only subdirectories of `challenges/` that contain a `config.json` are loaded.
+
+**Path:** `challenges/<challenge-id>/config.json`
+
+| Field         | Type   | Description |
+|---------------|--------|-------------|
+| `id`          | string | Must match the folder name (e.g. `web-basics-challenge`) |
+| `name`        | string | Display name of the challenge category |
+| `description` | string | Shown on the challenge landing page |
+| `password`    | string | Teams must enter this to “unlock” the challenge and see its CTFs (use `""` for no password) |
+
+**Example `challenges/my-challenge/config.json`:**
 
 ```json
 {
   "id": "my-challenge",
   "name": "My Challenge Name",
-  "description": "Description of the challenge",
+  "description": "Learn the basics of how websites work!",
   "password": "your_password_here"
 }
 ```
 
-2. Add CTFs inside a `/ctfs/` subfolder, each with its own `config.json`:
+---
+
+### CTFs
+
+Each **CTF** is a single puzzle/task. CTFs live inside a challenge under **`/challenges/<challenge-id>/ctfs/<ctf-id>/`**, with a **`config.json`** in that folder. Only subdirectories of `ctfs/` that contain a `config.json` are loaded.
+
+**Path:** `challenges/<challenge-id>/ctfs/<ctf-id>/config.json`
+
+| Field         | Type     | Description |
+|---------------|----------|-------------|
+| `id`          | string   | Must match the folder name (e.g. `cookie-clue`) |
+| `title`       | string   | CTF title |
+| `description` | string   | Full task description (supports newlines) |
+| `points`      | number   | Points awarded for first correct submission |
+| `flag`        | string   | Correct answer (e.g. `FLAG{...}`). Must match exactly. |
+| `hints`       | string[] | List of hints; each costs 10 × (hint index + 1) points (e.g. 1st = 10, 2nd = 20). |
+| `links`       | string[] | Optional URLs for learning or resources |
+| `photo`       | string \| null | Optional image filename (e.g. `photo.jpg`) in the same folder |
+
+**Example `challenges/my-challenge/ctfs/my-ctf/config.json`:**
 
 ```json
 {
   "id": "my-ctf",
   "title": "My CTF Title",
-  "description": "Detailed description",
-  "points": 100,
-  "photo": "photo.jpg",
+  "description": "Detailed description and steps for the task.",
+  "points": 60,
+  "flag": "FLAG{your_flag_here}",
+  "hints": ["First hint", "Second hint"],
   "links": ["https://example.com"],
-  "hints": ["Hint 1", "Hint 2"],
-  "flag": "FLAG{your_flag_here}"
+  "photo": null
 }
+```
+
+---
+
+### Directory summary
+
+```
+events.json                          # Event list (project root)
+
+challenges/
+  <challenge-id>/
+    config.json                      # Challenge config (id, name, description, password)
+    ctfs/
+      <ctf-id>/
+        config.json                  # CTF config (id, title, description, points, flag, hints, links, photo)
+        photo.jpg                    # Optional; reference in config as "photo": "photo.jpg"
 ```
 
 ## Security
