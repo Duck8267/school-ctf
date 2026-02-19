@@ -2,7 +2,7 @@
   "id": "challenge-6",
   "title": "URL Encoding Trap",
   "description": "URL encoding replaces unsafe ASCII characters with a '%' followed by two hexadecimal digits.\n\nYour task: Decode the following string:\n\nFLAG%7Burl_encoding_is_sneaky%7D\n\n The flag format is FLAG{decrypted_text}",
-  "points": 200,
+  "points": 50,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/Percent-encoding"
