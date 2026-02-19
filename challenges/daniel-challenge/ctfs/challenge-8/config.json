@@ -2,7 +2,7 @@
   "id": "challenge-8",
   "title": "XOR With a Twist",
   "description": "XOR encryption uses a key to scramble data.\n\nYour task: Decrypt the following hex string using a single-byte XOR key:\n\n1d0f141f3b0e1c3a1d0f1c0e3a1b\n\n The flag format is FLAG{decrypted_text}",
-  "points": 300,
+  "points": 100,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/XOR_cipher"
