@@ -2,7 +2,7 @@
   "id": "challenge-10",
   "title": "Triple-Layer Nightmare",
   "description": "This challenge uses multiple layers of encoding.\n\nYour task: Decode the following string:\n\nNTQ2YzQxNTc3YjY4NmY3NzVmNjk3MzVmNjg2MTcyNjQ3ZA==\n\n The flag format is FLAG{decrypted_text}",
-  "points": 400,
+  "points": 150,
   "photo": null,
   "links": [
     "https://gchq.github.io/CyberChef/"
