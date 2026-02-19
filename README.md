@@ -4,13 +4,14 @@ A web-based Capture The Flag platform designed for school-age students (15+) to 
 
 ## Features
 
-- Team registration with simple team name entry
+- Team registration with team name and a 4-digit PIN (so teams can log back in if they lose their session)
+- **Log in to existing team** — teams that signed out or lost connection can re-enter their team name and PIN to resume
 - Password-protected events containing multiple challenge categories
 - Timer tracking for each CTF attempt
 - Real-time leaderboard with countdown timer
 - Points system with hint purchasing
 - Youth-friendly, colorful UI
-- Superuser admin controls (remove teams, manage timer)
+- **Superuser** — admin (remove teams, manage timer) by signing in via "Log in to existing team" (team name **superuser**, PIN **7070**). The superuser team is created automatically per event on first login and cannot be registered.
 
 ## Getting Started
 
@@ -60,7 +61,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
   /api/                        # API routes
   /dashboard/                  # Team dashboard with leaderboard
   /event/                      # Event password entry
-  /join/                       # Team registration
+  /join/                       # Team registration (name + PIN) and login to existing team
   /challenge/[id]/             # Challenge category page
   /challenge/[id]/ctf/[ctfId]/ # Individual CTF page
 
@@ -72,32 +73,112 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
   ctfEmojis.ts                 # Emoji mapping for leaderboard
 ```
 
-## Adding Challenges
+## Adding Events, Challenges, and CTFs
 
-1. Create a folder in `/challenges/` with a `config.json`:
+### Events
+
+Events are stored in **`events.json`** at the project root. Users enter the event password on the `/event` page to join an event; teams are then scoped to that event.
+
+**Format:** JSON array of event objects.
+
+| Field       | Type   | Description                          |
+|------------|--------|--------------------------------------|
+| `id`       | string | Unique ID (e.g. `cyberfirst-girls-2024`) |
+| `name`     | string | Display name                         |
+| `date`     | string | Date text (e.g. `Thursday 27th November`) |
+| `location` | string | Venue or location                    |
+| `password` | string | Password users enter to join the event |
+| `description` | string | Short description                 |
+
+**Example `events.json`:**
+
+```json
+[
+  {
+    "id": "my-event-2025",
+    "name": "School CTF Day 2025",
+    "date": "March 15, 2025",
+    "location": "Main Hall",
+    "password": "secret123",
+    "description": "A day of cybersecurity challenges!"
+  }
+]
+```
+
+---
+
+### Challenges
+
+A **challenge** is a category that contains multiple CTFs. Each challenge lives in its own folder under **`/challenges/`** with a **`config.json`** at the root of that folder. Only subdirectories of `challenges/` that contain a `config.json` are loaded.
+
+**Path:** `challenges/<challenge-id>/config.json`
+
+| Field         | Type   | Description |
+|---------------|--------|-------------|
+| `id`          | string | Must match the folder name (e.g. `web-basics-challenge`) |
+| `name`        | string | Display name of the challenge category |
+| `description` | string | Shown on the challenge landing page |
+| `password`    | string | Teams must enter this to “unlock” the challenge and see its CTFs (use `""` for no password) |
+
+**Example `challenges/my-challenge/config.json`:**
 
 ```json
 {
   "id": "my-challenge",
   "name": "My Challenge Name",
-  "description": "Description of the challenge",
+  "description": "Learn the basics of how websites work!",
   "password": "your_password_here"
 }
 ```
 
-2. Add CTFs inside a `/ctfs/` subfolder, each with its own `config.json`:
+---
+
+### CTFs
+
+Each **CTF** is a single puzzle/task. CTFs live inside a challenge under **`/challenges/<challenge-id>/ctfs/<ctf-id>/`**, with a **`config.json`** in that folder. Only subdirectories of `ctfs/` that contain a `config.json` are loaded.
+
+**Path:** `challenges/<challenge-id>/ctfs/<ctf-id>/config.json`
+
+| Field         | Type     | Description |
+|---------------|----------|-------------|
+| `id`          | string   | Must match the folder name (e.g. `cookie-clue`) |
+| `title`       | string   | CTF title |
+| `description` | string   | Full task description (supports newlines) |
+| `points`      | number   | Points awarded for first correct submission |
+| `flag`        | string   | Correct answer (e.g. `FLAG{...}`). Must match exactly. |
+| `hints`       | string[] | List of hints; each costs 10 × (hint index + 1) points (e.g. 1st = 10, 2nd = 20). |
+| `links`       | string[] | Optional URLs for learning or resources |
+| `photo`       | string \| null | Optional image filename (e.g. `photo.jpg`) in the same folder |
+
+**Example `challenges/my-challenge/ctfs/my-ctf/config.json`:**
 
 ```json
 {
   "id": "my-ctf",
   "title": "My CTF Title",
-  "description": "Detailed description",
-  "points": 100,
-  "photo": "photo.jpg",
+  "description": "Detailed description and steps for the task.",
+  "points": 60,
+  "flag": "FLAG{your_flag_here}",
+  "hints": ["First hint", "Second hint"],
   "links": ["https://example.com"],
-  "hints": ["Hint 1", "Hint 2"],
-  "flag": "FLAG{your_flag_here}"
+  "photo": null
 }
+```
+
+---
+
+### Directory summary
+
+```
+events.json                          # Event list (project root)
+
+challenges/
+  <challenge-id>/
+    config.json                      # Challenge config (id, name, description, password)
+    ctfs/
+      <ctf-id>/
+        config.json                  # CTF config (id, title, description, points, flag, hints, links, photo)
+        photo.jpg                    # Optional; reference in config as "photo": "photo.jpg"
 ```
 
 ## Security
@@ -108,7 +189,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 |---------------|----------|-------------|-----|
 | **Cookie spoofing** | Critical | `team_id` cookie was a plain integer — anyone could set it to impersonate any team | Cookies are now HMAC-signed with `AUTH_SECRET`; tampered values are rejected |
 | **Path traversal** | High | `challengeId` and `ctfId` URL params were passed directly to `path.join()` (e.g. `../../etc/passwd`) | All path segments are validated with `safePath()` — rejects slashes, `..`, null bytes |
-| **Superuser privilege escalation** | High | Admin features gated only by team name — register as "superuser" to get full admin | Auth centralised via `requireSuperuser()` using signed cookies; name-based check still present but cookies can no longer be forged |
+| **Superuser privilege escalation** | High | Admin features gated only by team name — register as "superuser" to get full admin | Registration as "superuser" is blocked; admin only via "Log in to existing team" with a fixed credential. Auth centralised via `requireSuperuser()` using signed cookies. |
 | **Error information leakage** | Medium | Raw `error.message` was returned in all API responses | Catch blocks now return generic error messages; no internal details exposed |
 | **Missing input validation** | Medium | No length limits on team names, no type checks on request bodies | Team names capped at 50 chars; all inputs validated for type and bounds |
 | **No timing-safe comparison** | Low | Cookie verification used string comparison (theoretical timing attack) | HMAC verification uses `crypto.timingSafeEqual` |
@@ -178,8 +259,9 @@ The platform uses JSON files in a `/data` directory (auto-created, git-ignored).
 
 ## Notes
 
-- Teams are identified by HMAC-signed cookies
+- Teams are identified by HMAC-signed cookies. On first join, teams set a 4-digit PIN; they can log back in later with team name + PIN.
+- Teams created before the PIN feature have no stored PIN and cannot use “Log in to existing team”.
 - Timer starts automatically when a team views a CTF
 - Points are awarded only on first correct submission
 - Hints cost points (10 per hint number: hint 1 = 10pts, hint 2 = 20pts)
-- Superuser team is hidden from the leaderboard
+- **Superuser**: sign in via "Log in to existing team" with team name **superuser** and PIN **7070**. The superuser team is auto-created per event on first login; registration with that name is not allowed. Superuser is hidden from the leaderboard.

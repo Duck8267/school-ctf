@@ -217,6 +217,7 @@ test('auth module exists with HMAC signing and path sanitization', () => {
 test('all API routes use signed cookies from auth module (no raw cookies())', () => {
   const apiRoutes = [
     'app/api/teams/register/route.ts',
+    'app/api/teams/login/route.ts',
     'app/api/teams/me/route.ts',
     'app/api/teams/signout/route.ts',
     'app/api/teams/leaderboard/route.ts',
@@ -295,4 +296,27 @@ test('no API route exposes raw error.message to clients', () => {
       `${relative} should not expose raw error.message to clients`
     )
   }
+})
+
+test('register route requires 4-digit PIN and passes it to create', () => {
+  const registerPath = path.join(__dirname, '..', 'app', 'api', 'teams', 'register', 'route.ts')
+  const source = fs.readFileSync(registerPath, 'utf8')
+  assert.ok(source.includes('pin') && (source.includes('PIN_REGEX') || source.includes('4-digit')), 'Register should validate 4-digit PIN')
+  assert.ok(source.includes('create(') && source.includes('eventId,') && (source.includes('pinStr') || source.includes('superuserPin')), 'Register should call teams.create with pin')
+})
+
+test('login route exists and authenticates by team name and PIN', () => {
+  const loginPath = path.join(__dirname, '..', 'app', 'api', 'teams', 'login', 'route.ts')
+  const source = fs.readFileSync(loginPath, 'utf8')
+  assert.ok(source.includes('findByEventNameAndPin'), 'Login should use findByEventNameAndPin')
+  assert.ok(source.includes('setSignedCookie'), 'Login should set team_id cookie on success')
+  assert.ok(source.includes('Invalid team name or PIN') || source.includes('401'), 'Login should reject invalid credentials')
+})
+
+test('join page has PIN field and log in to existing team', () => {
+  const joinPath = path.join(__dirname, '..', 'app', 'join', 'page.tsx')
+  const source = fs.readFileSync(joinPath, 'utf8')
+  assert.ok(source.includes('4-digit PIN') || source.includes('pin'), 'Join page should ask for PIN')
+  assert.ok(source.includes('Log in to existing team'), 'Join page should offer login to existing team')
+  assert.ok(source.includes('/api/teams/login'), 'Join page should call login API')
 })
