@@ -2,7 +2,7 @@
   "id": "challenge-5",
   "title": "Caesar Cipher Reloaded",
   "description": "The Caesar cipher shifts letters by a fixed amount, but this time the shift is less obvious.\n\nYour task: Decode the following message:\n\nkrod{fdhvdu_flskhu}\n\n The flag format is FLAG{decrypted_text}",
-  "points": 175,
+  "points": 50,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/Caesar_cipher"
