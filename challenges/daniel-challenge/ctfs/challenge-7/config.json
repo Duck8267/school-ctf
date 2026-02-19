@@ -2,7 +2,7 @@
   "id": "challenge-7",
   "title": "Layered Encoding",
   "description": "Sometimes data is encoded multiple times.\n\nYour task: Decode the following message:\n\nSkxCR3tkbHF4aF9sYXllcn0=\n\n The flag format is FLAG{decrypted_text}",
-  "points": 250,
+  "points": 50,
   "photo": null,
   "links": [
     "https://gchq.github.io/CyberChef/"
