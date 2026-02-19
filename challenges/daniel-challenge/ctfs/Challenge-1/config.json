@@ -2,7 +2,7 @@
   "id": "Challenge-1",
   "title": "ROT13 Warm-Up",
   "description": "ROT13 is a simple letter substitution cipher that replaces a letter with the 13th letter after it in the alphabet.\n\nYour task: Decode the following message:\n\n ebg13_vf_rnfl \n\n The flag format is FLAG{decrypted_text}",
-  "points": 75,
+  "points": 30,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/ROT13"
