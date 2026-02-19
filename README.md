@@ -11,7 +11,7 @@ A web-based Capture The Flag platform designed for school-age students (15+) to 
 - Real-time leaderboard with countdown timer
 - Points system with hint purchasing
 - Youth-friendly, colorful UI
-- Superuser admin controls (remove teams, manage timer)
+- **Superuser** — admin (remove teams, manage timer) by signing in via "Log in to existing team" (team name **superuser**, PIN **7070**). The superuser team is created automatically per event on first login and cannot be registered.
 
 ## Getting Started
 
@@ -189,7 +189,7 @@ challenges/
 |---------------|----------|-------------|-----|
 | **Cookie spoofing** | Critical | `team_id` cookie was a plain integer — anyone could set it to impersonate any team | Cookies are now HMAC-signed with `AUTH_SECRET`; tampered values are rejected |
 | **Path traversal** | High | `challengeId` and `ctfId` URL params were passed directly to `path.join()` (e.g. `../../etc/passwd`) | All path segments are validated with `safePath()` — rejects slashes, `..`, null bytes |
-| **Superuser privilege escalation** | High | Admin features gated only by team name — register as "superuser" to get full admin | Auth centralised via `requireSuperuser()` using signed cookies; name-based check still present but cookies can no longer be forged |
+| **Superuser privilege escalation** | High | Admin features gated only by team name — register as "superuser" to get full admin | Registration as "superuser" is blocked; admin only via "Log in to existing team" with a fixed credential. Auth centralised via `requireSuperuser()` using signed cookies. |
 | **Error information leakage** | Medium | Raw `error.message` was returned in all API responses | Catch blocks now return generic error messages; no internal details exposed |
 | **Missing input validation** | Medium | No length limits on team names, no type checks on request bodies | Team names capped at 50 chars; all inputs validated for type and bounds |
 | **No timing-safe comparison** | Low | Cookie verification used string comparison (theoretical timing attack) | HMAC verification uses `crypto.timingSafeEqual` |
@@ -260,8 +260,8 @@ The platform uses JSON files in a `/data` directory (auto-created, git-ignored).
 ## Notes
 
 - Teams are identified by HMAC-signed cookies. On first join, teams set a 4-digit PIN; they can log back in later with team name + PIN.
-- **Existing teams (created before PIN was added)** have no stored PIN and cannot use “Log in to existing team”; only newly registered teams can.
+- Teams created before the PIN feature have no stored PIN and cannot use “Log in to existing team”.
 - Timer starts automatically when a team views a CTF
 - Points are awarded only on first correct submission
 - Hints cost points (10 per hint number: hint 1 = 10pts, hint 2 = 20pts)
-- Superuser team is hidden from the leaderboard
+- **Superuser**: sign in via "Log in to existing team" with team name **superuser** and PIN **7070**. The superuser team is auto-created per event on first login; registration with that name is not allowed. Superuser is hidden from the leaderboard.

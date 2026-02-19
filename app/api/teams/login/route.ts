@@ -26,11 +26,30 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const team = db.teams.findByEventNameAndPin(
-      eventId,
-      name.trim(),
-      pin
-    )
+    const trimmedName = name.trim()
+    const superuserPin = '7070'
+    const isSuperuser = trimmedName.toLowerCase() === 'superuser'
+
+    // Superuser may only log in with the hardcoded PIN 7070
+    if (isSuperuser && pin !== superuserPin) {
+      return NextResponse.json(
+        { error: 'Invalid team name or PIN' },
+        { status: 401 }
+      )
+    }
+
+    let team
+    if (isSuperuser) {
+      const inEvent = db.teams.getByEvent(eventId)
+      team = inEvent.find((t) => t.name.toLowerCase() === 'superuser') ?? undefined
+      // Pre-create superuser for this event on first login
+      if (!team) {
+        const teamId = db.teams.create('superuser', eventId, superuserPin)
+        team = db.teams.findById(teamId) ?? undefined
+      }
+    } else {
+      team = db.teams.findByEventNameAndPin(eventId, trimmedName, pin)
+    }
 
     if (!team) {
       return NextResponse.json(

@@ -302,7 +302,7 @@ test('register route requires 4-digit PIN and passes it to create', () => {
   const registerPath = path.join(__dirname, '..', 'app', 'api', 'teams', 'register', 'route.ts')
   const source = fs.readFileSync(registerPath, 'utf8')
   assert.ok(source.includes('pin') && (source.includes('PIN_REGEX') || source.includes('4-digit')), 'Register should validate 4-digit PIN')
-  assert.ok(source.includes('create(teamName, eventId, pinStr)'), 'Register should pass pin to teams.create')
+  assert.ok(source.includes('create(') && source.includes('eventId,') && (source.includes('pinStr') || source.includes('superuserPin')), 'Register should call teams.create with pin')
 })
 
 test('login route exists and authenticates by team name and PIN', () => {

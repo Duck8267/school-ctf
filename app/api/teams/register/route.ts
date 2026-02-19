@@ -37,9 +37,15 @@ export async function POST(request: NextRequest) {
     }
 
     const isSuperUserTeam = teamName.toLowerCase() === 'superuser'
+    if (isSuperUserTeam) {
+      return NextResponse.json(
+        { error: 'Use "Log in to existing team" to sign in as superuser' },
+        { status: 400 }
+      )
+    }
 
-    // Check if team name already exists in this event (skip check for superuser team)
-    if (!isSuperUserTeam) {
+    // Check if team name already exists in this event
+    {
       const teamsInEvent = db.teams.getByEvent(eventId)
       const existing = teamsInEvent.find(
         (t) => t.name.toLowerCase() !== 'superuser' && t.name === teamName
