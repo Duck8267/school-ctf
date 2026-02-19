@@ -2,7 +2,7 @@
   "id": "challenge-3",
   "title": "Binary Confusion",
   "description": "Binary encoding represents data using only 0s and 1s.\n\nYour task: Decode the following binary message:\n\n01000110 01001100 01000001 01000111 01111011 01100010 01101001 01101110 01100001 01110010 01111001 01011111 01110010 01110101 01101100 01100101 01110011 01111101\n\n The flag format is FLAG{decrypted_text}",
-  "points": 150,
+  "points": 30,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/Binary_number"
