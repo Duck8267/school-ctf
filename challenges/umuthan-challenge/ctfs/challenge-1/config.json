@@ -3,7 +3,7 @@
   "title": "Hidden in Plain Sight",
   "description": "Sometimes the answers are right in front of us, but we need the right tools to see them. We've hidden a flag inside the CSS styles of this page's background.",
   "points": 50,
-  "links": ["https://school-ctf-production-9947.up.railway.app/challenges/umuthan-challenge/ctfs/challenge-1"],
+  "links": ["https://school-ctf-production-9947.up.railway.app/challenges/umuthan-challenge/ctfs/challenge-1/page.tsx"],
   "hints": ["Press F12 or right-click and select 'Inspect'.", "Have you checked the 'Styles' tab in the developer tools?"],
   "flag": "FLAG{web_inspect_pro}"
 }
