@@ -1,7 +1,7 @@
 const express = require('express');
-const app = express();
+const router = express.Router();
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
   res.send(`<!DOCTYPE html>
 <html>
 <head>
@@ -31,4 +31,4 @@ app.get('/', (req, res) => {
 </html>`);
 });
 
-app.listen(3000, () => console.log('Running on http://localhost:3000'));
+module.exports = router;
