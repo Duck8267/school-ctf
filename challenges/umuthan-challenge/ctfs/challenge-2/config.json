@@ -3,7 +3,7 @@
   "title": "The Whispering Console",
   "description": "Developers often leave messages in the console to debug their code. This  page sends a secret message to the console every time it loads.",
   "points": 75,
-  "links": ["index.html"],
+  "links": ["https://school-ctf-production-9947.up.railway.app/api/challenges/umuthan-challenge/ctfs/challenge-2"],
   "hints": ["Open the 'Console' tab and refresh the page.", "Look for a message that starts with 'FLAG{'."],
   "flag": "FLAG{console_detective}"
 }

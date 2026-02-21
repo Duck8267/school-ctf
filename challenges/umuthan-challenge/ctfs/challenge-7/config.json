@@ -4,7 +4,7 @@
   "description": "There is a 'Claim Flag' button, but it's grayed out and unclickable. Can you  find a way to activate it?",
   "points": 80,
   "links": [
-    "index.html"
+    "https://school-ctf-production-9947.up.railway.app/api/challenges/umuthan-challenge/ctfs/challenge-7"
   ],
   "hints": [
     "Inspect the button and look for the 'disabled' attribute.",

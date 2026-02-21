@@ -3,7 +3,7 @@
   "title": "Forgotten Memory",
   "description": "Websites don't just use cookies; they also use 'Local Storage' to remember things. Check if anything was left behind there.",
   "points": 100,
-  "links": ["index.html"],
+  "links": ["https://school-ctf-production-9947.up.railway.app/api/challenges/umuthan-challenge/ctfs/challenge-6"],
   "hints": [
     "F12 > Application > Local Storage.",
     "Look for a key named 'secret_vault'."
