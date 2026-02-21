@@ -4,7 +4,7 @@
   "description": "This string has been through three layers of protection: It was converted to Hex, then Rot13, then Reversed. Can you undo it?",
   "points": 250,
   "links": [
-    "final-challenge.txt"
+    "https://school-ctf-production-9947.up.railway.app/api/challenges/umuthan-challenge/ctfs/challenge-10/txt"
   ],
   "hints": [
     "Use CyberChef and add operations in this order: 'Reverse', 'ROT13', and 'From Hex'.",

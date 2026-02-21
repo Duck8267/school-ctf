@@ -3,7 +3,7 @@
 "title": "Secrets in Pixels", 
 "description": "We provided a logo for the event. If you look at the raw source code of the  image file, you might find a Base64 encoded string hidden at the end.", 
 "points": 125, 
-"links": ["assets/logo.png"], 
+"links": ["https://school-ctf-production-9947.up.railway.app/api/challenges/umuthan-challenge/ctfs/challenge-5"], 
 "hints": ["Open the image in a text editor or use CyberChef's 'Strings' operation.", "The  string ends in '==', which is a common sign of Base64."], 
 "flag": "FLAG{hidden_in_pixels}" 
 } 

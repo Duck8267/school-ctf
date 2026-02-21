@@ -4,7 +4,7 @@
   "description": "The script checks if `isAuthorized` is true. We've set it to false. Can you override the system logic using the console?",
   "points": 175,
   "links": [
-    "challenge-9/index.html"
+    "https://school-ctf-production-9947.up.railway.app/api/challenges/umuthan-challenge/ctfs/challenge-9"
   ],
   "hints": [
     "Type `isAuthorized = true` into the console and press Enter.",
