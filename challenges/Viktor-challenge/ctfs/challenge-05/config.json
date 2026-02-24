@@ -2,12 +2,12 @@
 "id": "challenge-05",
 "title": "Metadata Trail",
 "description": "An image shared by a threat actor contains GPS data in its EXIF metadata. Extract the GPS longitude and round it to two decimal places.",
-"points": 175,
-"links": ["https://your-ctf-site.com/assets/metadata-image.jpg"],
+"points": 150,
+"links": ["https://cyber.kent.ac.uk/events/ACE-Cyber-Security-Competition@Kent-20260224/metadata-image.jpg"],
 "hints": [
 "Use an online EXIF data viewer.",
 "Look for 'GPS Longitude' in the metadata.",
-"Round the value to two decimal places."
+"Convert the longitude to decimal form using this formula:\nDecimal = Degrees + (Minutes / 60) + (Seconds / 3600)"
 ],
 "flag": "FLAG{0.12}"
 }

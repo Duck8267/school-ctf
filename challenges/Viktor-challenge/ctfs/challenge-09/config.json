@@ -1,13 +1,13 @@
 {
-"id": "challenge-09",
-"title": "Malware Detection Count",
-"description": "A suspicious file hash has been identified: '44d88612fea8a8f36de82e1278abb02f'. Use a threat intelligence platform to determine how many security vendors flag this file as malicious.",
-"points": 200,
-"links": ["https://your-ctf-site.com/cti-malware-09b"],
-"hints": [
-"Search the hash on VirusTotal.",
-"Check the detection or security vendors section.",
-"The flag format is FLAG{number}."
-],
-"flag": "FLAG{61}"
+  "id": "challenge-09",
+  "title": "Archived Source Inspection",
+  "description": "Use the Wayback Machine to locate the earliest available archived snapshot of 'https://www.offensive-security.com'.\n\nOpen that snapshot and inspect the HTML source of the archived page itself (not the Wayback interface).\n\nWithin the page’s HEADER section, identify the first word of the first paragraph contained there.\n\nThe answer is case-sensitive.",
+  "points": 200,
+  "links": ["https://web.archive.org/"],
+  "hints": [
+    "Make sure you select the earliest snapshot available.",
+    "Use 'View Page Source' and analyse the archived page HTML, not the Wayback wrapper.",
+    "Only analyse the HTML that appears AFTER: <!-- END WAYBACK TOOLBAR INSERT -->"
+  ],
+  "flag": "FLAG{Professional}"
 }

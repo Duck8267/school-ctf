@@ -1,13 +1,12 @@
 {
 "id": "challenge-03",
 "title": "Tracing the Sender",
-"description": "A phishing email was reported by an employee. You have been given the email headers. Identify the originating IP address by locating the first 'Received: from' entry. Extract the last octet of that IP address.",
-"points": 125,
-"links": ["https://your-ctf-site.com/email-headers-03b.txt"],
+"description": "A phishing email was reported by an employee. You have been given the email headers below.\n\nIdentify the originating IP address by locating the first 'Received: from' entry. Extract the last octet of that IP address.\n\n--- EMAIL HEADERS ---\n\nReturn-Path: <spoofed@paypa1-support.com>\nReceived: from mail.paypa1-support.com (mail.paypa1-support.com [185.203.119.42])\n        by mx.google.com with ESMTPS id k12si1234567qtc.123.2025.02.20.09.15.22\n        for <employee@company.com>\n        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);\n        Thu, 20 Feb 2025 09:15:22 -0800 (PST)\nReceived: from unknown (HELO user-PC) (192.168.1.15)\n        by mail.paypa1-support.com with SMTP;\n        Thu, 20 Feb 2025 17:15:18 +0000\nMessage-ID: <20250220171518.12345@mail.paypa1-support.com>\nDate: Thu, 20 Feb 2025 17:15:18 +0000\nFrom: \"PayPal Security\" <security@paypa1-support.com>\nTo: employee@company.com\nSubject: Urgent: Account Verification Required\nMIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8\n\nThe flag format is FLAG{lastoctet}.",
+"points": 100,
 "hints": [
 "Look for the first 'Received: from' line.",
 "The IP address is usually in square brackets.",
-"The flag format is FLAG{lastoctet}."
+"The flag is FLAG{42}."
 ],
 "flag": "FLAG{42}"
 }

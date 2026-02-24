@@ -1,14 +1,13 @@
 {
 "id": "challenge-08",
-"title": "Archived Evidence",
-"description": "Investigate the website 'https://www.offensive-security.com' using the Wayback Machine. Identify the earliest archived snapshot and extract the last word from the page title.",
+"title": "Malware Detection Count",
+"description": "A suspicious file hash has been identified: '44d88612fea8a8f36de82e1278abb02f'. Use a threat intelligence platform to determine how many security vendors flag this file as malicious.",
 "points": 150,
-"links": ["https://your-ctf-site.com/cti-wayback-08b"],
+"links": ["https://www.virustotal.com/"],
 "hints": [
-"Use web.archive.org.",
-"Select the earliest available snapshot.",
-"Check the browser tab title or HTML title tag."
+"Search the hash on VirusTotal.",
+"Check the detection or security vendors section.",
+"The flag format is FLAG{number}."
 ],
-"flag": "FLAG{training}"
+"flag": "FLAG{67}"
 }
-

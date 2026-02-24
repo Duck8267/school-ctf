@@ -1,14 +1,14 @@
 {
-"id": "challenge-06",
-"title": "Online Footprint",
-"description": "The username 'silentobserver22' has been linked to suspicious activity. Use a username checking tool to determine how many platforms show this username as existing.",
-"points": 125,
-"links": ["https://your-ctf-site.com/cti-username-06b"],
-"hints": [
-"Search for a username availability checker.",
-"Count only platforms where the username exists.",
-"Ignore unavailable or unknown results."
-],
-"flag": "FLAG{3}"
+  "id": "challenge-06",
+  "title": "Verified Organization",
+  "description": "Investigate the GitHub organization 'microsoft'.\n\nGitHub displays a verified domain badge on the profile. Identify the verified domains associated with this organization. Provide the shorter domain.",
+  "points": 150,
+  "links": ["https://github.com/microsoft"],
+  "hints": [
+    "Visit the GitHub organization page.",
+    "Look near the organization name for the verified badge.",
+    "The verified domain appears next to the checkmark.",
+    "The flag format is FLAG{domain}."
+  ],
+  "flag": "FLAG{microsoft.com}"
 }
-
