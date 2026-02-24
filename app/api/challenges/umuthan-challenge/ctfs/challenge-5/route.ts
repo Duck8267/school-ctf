@@ -6,7 +6,7 @@ export async function GET() {
 <head><title>Secrets in Pixels</title></head>
 <body>
   <h1>Secrets in Pixels</h1>
-  <img src="/api/challenges/umuthan-challenge/ctfs/challenge-5/assets/logo.png" alt="Event Logo" />
+  <img src="/api/challenges/umuthan-challenge/ctfs/challenge-05/assets/logo.png" alt="Event Logo" />
 </body>
 </html>`, {
     headers: { 'Content-Type': 'text/html' },
