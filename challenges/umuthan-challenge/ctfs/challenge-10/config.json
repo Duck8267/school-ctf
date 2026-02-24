@@ -2,7 +2,7 @@
   "id": "challenge-10",
   "title": "The Grand Finale",
   "description": "This string has been through three layers of protection: It was converted to Hex, then Rot13, then Reversed. Can you undo it?",
-  "points": 150,
+  "points": 180,
   "links": [
     "https://school-ctf-production-9947.up.railway.app/api/challenges/umuthan-challenge/ctfs/challenge-10/txt"
   ],
