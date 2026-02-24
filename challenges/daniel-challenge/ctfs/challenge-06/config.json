@@ -1,18 +1,19 @@
 {
   "id": "challenge-06",
   "title": "URL Encoding Trap",
-  "description": "URL encoding replaces unsafe ASCII characters with a '%' followed by two hexadecimal digits.\n\nYour task: Decode the following string:\n\nFLAG%7Burl_encoding_is_sneaky%7D\n\n The flag format is FLAG{decrypted_text}",
+  "description": "URL encoding replaces unsafe ASCII characters with a '%' followed by two hexadecimal digits. But sometimes data is encoded more than once. \n\nYour task: Decode the following string:\n\ndXJsJTIwZW5jb2RpbmclMjBpcyUyMHNuZWFreQ==\n\n The flag format is FLAG{decrypted_text}",
   "points": 50,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/Percent-encoding"
   ],
   "hints": [
+    "it is base 64 encoded too",
     "Look for the URL Decode operation",
     "Only certain characters are encoded",
     "The text already contains the word FLAG"
   ],
-  "flag": "FLAG{url_encoding_is_sneaky}"
+  "flag": "FLAG{url encoding is sneaky}"
 }
 
 
