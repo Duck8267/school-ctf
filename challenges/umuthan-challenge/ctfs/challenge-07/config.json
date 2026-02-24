@@ -2,7 +2,7 @@
   "id": "challenge-07",
   "title": "The Unclickable Button",
   "description": "There is a 'Claim Flag' button, but it's grayed out and unclickable. Can you  find a way to activate it?",
-  "points": 30,
+  "points": 60,
   "links": [
     "https://school-ctf-production-9947.up.railway.app/api/challenges/umuthan-challenge/ctfs/challenge-07"
   ],
