@@ -12,7 +12,7 @@
     "The text already resembles a flag",
     "No extra decoding may be required"
   ],
-  "flag": "FLAG{hello_world}"
+  "flag": "FLAG{backwards_is_forwards}"
 }
 
 
