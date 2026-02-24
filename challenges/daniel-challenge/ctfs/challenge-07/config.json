@@ -1,7 +1,7 @@
 {
   "id": "challenge-07",
   "title": "Layered Encoding",
-  "description": "Sometimes data is encoded multiple times.\n\nYour task: Decode the following message:\n\nSU9ESntncnhlb2hfb2RiaHV2fQ==\n\n The flag format is FLAG{decrypted_text}",
+  "description": "Sometimes data is encoded multiple times.\n\nYour task: Decode the following message:\n\nZ3J4ZW9oX29kYmh1dg==\n\n The flag format is FLAG{decrypted_text}",
   "points": 50,
   "photo": null,
   "links": [
