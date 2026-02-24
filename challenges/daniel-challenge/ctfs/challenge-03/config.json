@@ -1,7 +1,7 @@
 {
   "id": "challenge-03",
   "title": "Hex to Text",
-  "description": "Hexadecimal encoding represents characters using base-16 values.\n\nYour task: Decode the following hexadecimal string:\n\n464c41477b6865785f69735f66756e7d\n\nHint: The flag format is FLAG{decrypted_text}",
+  "description": "Hexadecimal encoding represents characters using base-16 values.\n\nYour task: Decode the following hexadecimal string:\n\n6865785f69735f66756e\n\nHint: The flag format is FLAG{decrypted_text}",
   "points": 30,
   "photo": null,
   "links": [
