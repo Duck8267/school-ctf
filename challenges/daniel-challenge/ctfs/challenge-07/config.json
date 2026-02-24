@@ -1,0 +1,18 @@
+{
+  "id": "challenge-07",
+  "title": "Layered Encoding",
+  "description": "Sometimes data is encoded multiple times.\n\nYour task: Decode the following message:\n\nSkxCR3tkbHF4aF9sYXllcn0=\n\n The flag format is FLAG{decrypted_text}",
+  "points": 50,
+  "photo": null,
+  "links": [
+    "https://gchq.github.io/CyberChef/"
+  ],
+  "hints": [
+    "Try Base64 decoding first",
+    "The result is still encrypted",
+    "A Caesar shift of 3 may help"
+  ],
+  "flag": "FLAG{double_layers}"
+}
+
+
