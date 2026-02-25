@@ -1,16 +1,16 @@
 {
   "id": "challenge-10",
   "title": "Triple-Layer Nightmare",
-  "description": "This challenge uses multiple layers of encoding.\n\nYour task: Decode the following string:\n\nNjg2Zjc3NWY2OTczNWY2ODYxNzI2NA==\n\n The flag format is FLAG{decrypted_text}",
+  "description": "This challenge uses multiple layers of encoding.\n\nYour task: Decode the following string:\n\nNjg2Zjc3NWY2OTczNWY2ODYxNzI2NA==\n\n ",
   "points": 150,
   "photo": null,
   "links": [
     "https://gchq.github.io/CyberChef/"
   ],
   "hints": [
-    "Try Base64 decoding first",
-    "The result may be hexadecimal",
-    "Convert step by step and do not rush"
+    "There are three layers to this challenge — work through them one at a time",
+    "The == tells you where to start. The next layer only uses the digits 0-9 and letters a-f",
+    "Use 'From Base64' → 'From Hex' in CyberChef in that order",
   ],
   "flag": "FLAG{how_is_hard}"
 }
