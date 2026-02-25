@@ -1,13 +1,13 @@
 {
-"id": "challenge-02",
-"title": "Registration Records",
-"description": "Investigate the domain 'google.com' using a WHOIS lookup tool. Determine the year the domain was registered. The flag format is FLAG{YYYY}.",
-"points": 50,
-"links": ["https://google.com/"],
-"hints": [
-"Use a WHOIS lookup service.",
-"Look for 'Creation Date' or 'Registered On'.",
-"The flag is FLAG{1997}."
-],
-"flag": "FLAG{1997}"
+  "id": "challenge-02",
+  "title": "DNS Infrastructure",
+  "description": "Investigate the domain 'iana.org'. Identify one of its authoritative name servers (NS record). Extract only the hostname before the first dot.",
+  "points": 50,
+  "links": ["https://iana.org"],
+  "hints": [
+    "Use a DNS lookup tool.",
+    "Search specifically for NS records.",
+    "The flag format is FLAG{hostname}."
+  ],
+  "flag": "FLAG{a}"
 }

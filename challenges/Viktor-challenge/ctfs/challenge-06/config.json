@@ -1,14 +1,13 @@
 {
   "id": "challenge-06",
-  "title": "Verified Organization",
-  "description": "Investigate the GitHub organization 'microsoft'.\n\nGitHub displays a verified domain badge on the profile. Identify the verified domains associated with this organization. Provide the shorter domain.",
+  "title": "Open Source License",
+  "description": "Investigate the GitHub repository 'torvalds/linux'. Identify the license used by the project.\n\nNote that case-sensitivty matters.",
   "points": 150,
-  "links": ["https://github.com/microsoft"],
+  "links": ["https://github.com/torvalds/linux"],
   "hints": [
-    "Visit the GitHub organization page.",
-    "Look near the organization name for the verified badge.",
-    "The verified domain appears next to the checkmark.",
-    "The flag format is FLAG{domain}."
+    "Visit the repository page.",
+    "Look for the 'License' section.",
+    "The flag format is FLAG{license_name}."
   ],
-  "flag": "FLAG{microsoft.com}"
+  "flag": "FLAG{GPL-2.0}"
 }
