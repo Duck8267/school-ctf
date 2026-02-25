@@ -1,16 +1,16 @@
 {
   "id": "challenge-03",
   "title": "Hex to Text",
-  "description": "Hexadecimal encoding represents characters using base-16 values.\n\nYour task: Decode the following hexadecimal string:\n\n6865785f69735f66756e\n\nHint: The flag format is FLAG{decrypted_text}",
+  "description": "Hexadecimal encoding represents characters using base-16 values.\n\nYour task: Decode the following hexadecimal string:\n\n6865785f69735f66756e\n\n",
   "points": 30,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/Hexadecimal"
   ],
   "hints": [
-    "Each pair of hex characters represents one byte",
-    "Use the From Hex operation in CyberChef",
-    "The output should be plain text"
+    "The string only contains the numbers 0-9 and letters a-f",
+    "Each pair of characters represents a single letter",
+    "Use 'From Hex' in CyberChef, every two characters will become one readable character"
   ],
   "flag": "FLAG{hex_is_fun}"
 }
