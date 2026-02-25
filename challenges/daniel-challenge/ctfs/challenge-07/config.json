@@ -8,9 +8,9 @@
     "https://gchq.github.io/CyberChef/"
   ],
   "hints": [
-    "Try Base64 decoding first",
-    "The result is still encrypted",
-    "A Caesar shift of 3 may help"
+    "There is more than one encoding layer here",
+    "The == at the end should tell you where to start — the result will still need more work",
+    "Use 'From Base64' first, then apply ROT13 with Amount set to 23 in CyberChef"
   ],
   "flag": "FLAG{double_layers}"
 }
