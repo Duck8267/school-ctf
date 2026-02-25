@@ -10,7 +10,7 @@
   "hints": [
     "There are three layers to this challenge — work through them one at a time",
     "The == tells you where to start. The next layer only uses the digits 0-9 and letters a-f",
-    "Use 'From Base64' → 'From Hex' in CyberChef in that order",
+    "Use 'From Base64' → 'From Hex' in CyberChef in that order"
   ],
   "flag": "FLAG{how_is_hard}"
 }
