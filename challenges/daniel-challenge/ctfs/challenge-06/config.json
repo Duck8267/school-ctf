@@ -1,17 +1,16 @@
 {
   "id": "challenge-06",
   "title": "URL Encoding Trap",
-  "description": "URL encoding replaces unsafe ASCII characters with a '%' followed by two hexadecimal digits. But sometimes data is encoded more than once. \n\nYour task: Decode the following string:\n\ndXJsJTIwZW5jb2RpbmclMjBpcyUyMHNuZWFreQ==\n\n The flag format is FLAG{decrypted_text}",
+  "description": "URL encoding replaces unsafe ASCII characters with a '%' followed by two hexadecimal digits. But sometimes data is encoded more than once. \n\nYour task: Decode the following string:\n\ndXJsJTIwZW5jb2RpbmclMjBpcyUyMHNuZWFreQ==\n\n ",
   "points": 50,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/Percent-encoding"
   ],
   "hints": [
-    "it is base 64 encoded too",
-    "Look for the URL Decode operation",
-    "Only certain characters are encoded",
-    "The text already contains the word FLAG"
+    "The == at the end of the string is a well-known encoding signature",
+    "Decode the outer layer first — the result will still look encoded",
+    "Use 'From Base64' first in CyberChef, then apply 'URL Decode' to the result"
   ],
   "flag": "FLAG{url encoding is sneaky}"
 }
