@@ -1,16 +1,16 @@
 {
   "id": "challenge-05",
   "title": "Caesar Cipher Reloaded",
-  "description": "The Caesar cipher shifts letters by a fixed amount, but this time the shift is less obvious.\n\nYour task: Decode the following message:\n\nfdhvdu_flskhu\n\n The flag format is FLAG{decrypted_text}",
+  "description": "The Caesar cipher shifts letters by a fixed amount, but this time the shift is less obvious.\n\nYour task: Decode the following message:\n\nfdhvdu_flskhu\n\n ",
   "points": 50,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/Caesar_cipher"
   ],
   "hints": [
-    "Try a shift of 3",
-    "Only letters are shifted, not symbols",
-    "CyberChef has a brute force option"
+    "Every letter has been shifted the same number of positions through the alphabet",
+    "The shift is a double-digit number — try values between 15 and 25",
+    "Use the ROT13 operation in CyberChef but change the Amount field to 23"
   ],
   "flag": "FLAG{caesar_cipher}"
 }
