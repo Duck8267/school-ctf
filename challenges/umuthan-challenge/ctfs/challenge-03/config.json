@@ -9,7 +9,7 @@
   "hints": [
     "Go to Application > Cookies.",
     "Try changing the value of 'user_role' from 'guest' to 'admin'.",
-    "console → document.cookie = "user_role=admin; path=/api/challenges/umuthan-challenge/ctfs";"
+    "console → document.cookie = \"user_role=admin; path=/api/challenges/umuthan-challenge/ctfs\";"
   ],
   "flag": "FLAG{cookie_is_delicious}"
 }
