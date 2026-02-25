@@ -1,0 +1,14 @@
+{
+  "id": "challenge-10",
+  "title": "AnyRun report analysis",
+  "description": "Dynamic analysis of malware can be conducted using public sandbox platforms such as ANY.RUN, which execute suspicious files in a controlled environment and record their behaviour.In this question, you are given a file hash and its corresponding sandbox report. Use the report to answer the questions that follow. What process was a victim of injection?",
+  "points": 75,
+  "links": ["https://any.run/report/b9c11f7245e4f68c3d0c9f864d9962f6d8ad3605ea9b1ab0e9e4f74d01ecfd30/3b499c90-2e8c-4dc9-84bb-3d353a1a7d45?_gl=1*1ouxcp6*_gcl_au*NTY1NjYzMzE2LjE3NjUyMDQ5ODk.*FPAU*NTY1NjYzMzE2LjE3NjUyMDQ5ODk.*_ga*MTI4NTYwMjk1MC4xNzU3MzMzOTQ1*_ga_53KB74YDZR*czE3NzIwMjcyMzAkbzQ1JGcxJHQxNzcyMDI3NzY2JGoyMSRsMCRoODM0MDcxNjA.",
+  "https://www.virustotal.com/gui/file/b9c11f7245e4f68c3d0c9f864d9962f6d8ad3605ea9b1ab0e9e4f74d01ecfd30"],
+  "hints": [
+    "In the AnyRun report inspect the 'Behavior activties'",
+	"The victim process is commonly used to handle your files"
+ 
+  ],
+  "flag": "FLAG{explorer.exe}"
+}
