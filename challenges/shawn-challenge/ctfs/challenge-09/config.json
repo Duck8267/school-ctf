@@ -10,5 +10,5 @@
 	"The process responsible for the operation is built-in windows scripting tool"
  
   ],
-  "flag": "FLAG{powershell.exe -c Add-MpPreference -ExclusionProcess 'C:\Users\admin\Videos\Symbiote.exe'}"
+  "flag": "FLAG{powershell.exe -c Add-MpPreference -ExclusionProcess 'C:\\Users\\admin\\Videos\\Symbiote.exe'}"
 }
