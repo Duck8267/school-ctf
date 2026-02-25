@@ -458,7 +458,7 @@ export default function CTFPage() {
                   value={flag}
                   onChange={(e) => setFlag(e.target.value)}
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none text-lg"
-                  placeholder="FLAG{...}"
+                  placeholder="Flag goes here..."
                   required
                   disabled={submitting}
                 />
