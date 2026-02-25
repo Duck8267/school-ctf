@@ -1,16 +1,16 @@
 {
   "id": "challenge-04",
   "title": "Binary Confusion",
-  "description": "Binary encoding represents data using only 0s and 1s.\n\nYour task: Decode the following binary message:\n\n01100010 01101001 01101110 01100001 01110010 01111001 01011111 01110010 01110101 01101100 01100101 01110011\n\n The flag format is FLAG{decrypted_text}",
+  "description": "Binary encoding represents data using only 0s and 1s.\n\nYour task: Decode the following binary message:\n\n01100010 01101001 01101110 01100001 01110010 01111001 01011111 01110010 01110101 01101100 01100101 01110011\n\n ",
   "points": 50,
   "photo": null,
   "links": [
     "https://en.wikipedia.org/wiki/Binary_number"
   ],
   "hints": [
-    "Each 8-bit chunk represents an ASCII character",
-    "Remove spaces if necessary",
-    "CyberChef can automatically detect binary"
+    "Only two different digits appear in this message",
+    "Each group of 8 digits represents a single character",
+    "Use 'From Binary' in CyberChef — each 8-bit chunk maps directly to an ASCII letter"
   ],
   "flag": "FLAG{binary_rules}"
 }
