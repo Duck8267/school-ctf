@@ -320,3 +320,22 @@ test('join page has PIN field and log in to existing team', () => {
   assert.ok(source.includes('Log in to existing team'), 'Join page should offer login to existing team')
   assert.ok(source.includes('/api/teams/login'), 'Join page should call login API')
 })
+
+test('CTF page redirects to challenge page after correct submission', () => {
+  const ctfPagePath = path.join(
+    __dirname,
+    '..',
+    'app',
+    'challenge',
+    '[id]',
+    'ctf',
+    '[ctfId]',
+    'page.tsx'
+  )
+  const source = fs.readFileSync(ctfPagePath, 'utf8')
+
+  assert.ok(
+    source.includes('router.push(`/challenge/${challengeId}`)'),
+    'CTF page should redirect to challenge page after correct flag'
+  )
+})

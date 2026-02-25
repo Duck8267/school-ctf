@@ -188,9 +188,9 @@ export default function CTFPage() {
           const statusData = await statusRes.json()
           setStatus(statusData)
         }
-        // Refresh dashboard data
+        // Redirect back to challenge page
         setTimeout(() => {
-          router.push('/dashboard')
+          router.push(`/challenge/${challengeId}`)
         }, 2000)
       } else {
         setError(data.message || 'Incorrect flag. Keep trying!')
