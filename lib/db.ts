@@ -153,7 +153,7 @@ const db = {
       const team: Team = {
         id,
         name,
-        total_points: 60,
+        total_points: 10,
         event_id,
         created_at: new Date().toISOString(),
         pin,
