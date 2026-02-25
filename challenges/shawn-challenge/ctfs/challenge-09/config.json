@@ -1,12 +1,11 @@
 {
   "id": "challenge-09",
   "title": "AnyRun report analysis 1",
-  "description": "Dynamic analysis of malware can be conducted using public sandbox platforms such as ANY.RUN, which execute suspicious files in a controlled environment and record their behaviour.In this question, you are given a file hash and its corresponding sandbox report. Use the report to answer the questions that follow. What is the full command which adds a certain file to the Microsoft Defender exclusions?",
+  "description": "Dynamic analysis of malware can be conducted using public sandbox platforms such as ANY.RUN, which execute suspicious files in a controlled environment and record their behaviour. In this question you are provided a sandbox report. Read the report to answer the questions that follow. What is the full command that adds a certain file to the Microsoft Defender exclusions?",
   "points": 75,
-  "links": ["https://tinyurl.com/3u8za4xx",
-  "https://www.virustotal.com/gui/file/b9c11f7245e4f68c3d0c9f864d9962f6d8ad3605ea9b1ab0e9e4f74d01ecfd30"],
+  "links": ["https://tinyurl.com/sandbox-report"],
   "hints": [
-	"The process responsible for the operation is built-in windows scripting tool", 
+	"The process responsible for the operation is a built-in windows scripting tool", 
     "In the process information section scroll down untill you find the process and copy its command line. Maybe Ctrl+f will help."
 	
  
