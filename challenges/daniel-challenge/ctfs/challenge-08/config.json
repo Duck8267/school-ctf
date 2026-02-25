@@ -8,9 +8,9 @@
     "https://en.wikipedia.org/wiki/XOR_cipher"
   ],
   "hints": [
-    "Try brute forcing a single-byte key",
-    "Look for readable ASCII output",
-    "CyberChef has an XOR Brute Force tool"
+    "This string is hex encoded — but converting it to text won't give you the flag directly",
+    "The data has been scrambled using a single character as a key",
+    "Use 'From Hex' then 'XOR Brute Force' in CyberChef and look through the results for readable text"
   ],
   "flag": "FLAG{xor_is_powerful}"
 }
