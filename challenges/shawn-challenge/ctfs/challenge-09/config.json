@@ -1,5 +1,5 @@
 {
-  "id": "challenge-08",
+  "id": "challenge-09",
   "title": "AnyRun report analysis 1",
   "description": "Dynamic analysis of malware can be conducted using public sandbox platforms such as ANY.RUN, which execute suspicious files in a controlled environment and record their behaviour.In this question, you are given a file hash and its corresponding sandbox report. Use the report to answer the questions that follow. What is the full command which adds a certain file to the Microsoft Defender exclusions?",
   "points": 75,
