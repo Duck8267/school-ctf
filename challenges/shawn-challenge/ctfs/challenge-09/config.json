@@ -6,9 +6,10 @@
   "links": ["https://tinyurl.com/3u8za4xx",
   "https://www.virustotal.com/gui/file/b9c11f7245e4f68c3d0c9f864d9962f6d8ad3605ea9b1ab0e9e4f74d01ecfd30"],
   "hints": [
-    "In the AnyRun report inspect the 'Behavior activties'",
-	"The process responsible for the operation is built-in windows scripting tool"
+	"The process responsible for the operation is built-in windows scripting tool", 
+    "In the process information section scroll down untill you find the process and copy its command line. Maybe Ctrl+f will help."
+	
  
   ],
-  "flag": "FLAG{powershell.exe -c Add-MpPreference -ExclusionProcess 'C:\\Users\\admin\\Videos\\Symbiote.exe'}"
+  "flag": "FLAG{powershell.exe -c Add-MpPreference -ExclusionProcess \"C:\\Users\\admin\\Videos\\Symbiote.exe\"}"
 }
