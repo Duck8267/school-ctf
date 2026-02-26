@@ -1,7 +1,7 @@
 {
   "id": "challenge-06",
   "title": "Open Source License",
-  "description": "Investigate the GitHub repository 'torvalds/linux'. Identify the license used by the project.\n\nNote that case-sensitivty matters.",
+  "description": "Investigate the GitHub repository 'torvalds/linux'. Identify the license used by the project.\n\nNote that case-sensitivity matters.",
   "points": 150,
   "links": ["https://github.com/torvalds/linux"],
   "hints": [
