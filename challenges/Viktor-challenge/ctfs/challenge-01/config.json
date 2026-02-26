@@ -1,7 +1,7 @@
 {
   "id": "challenge-01",
   "title": "Network Ownership",
-  "description": "A suspicious login originated from IP address '1.1.1.1'. Identify the Autonomous System (AS) organization that owns this IP address.",
+  "description": "A suspicious login originated from IP address '1.1.1.1'. Identify the Autonomous System (AS) organization that owns this IP address.\n\nPlease use lower case for the answer.",
   "points": 50,
   "hints": [
     "Use an IP lookup or BGP/ASN lookup tool.",
